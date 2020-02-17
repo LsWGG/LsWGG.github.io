@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快速链接</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.min.js"></script>
+    <script type="text/javascript"> L2Dwidget.init(); </script>
+    
+</head>
+<style>
+    .outer {
+        height: 300px;
+        width: 85%;
+        display: flex;
+    }
+
+    .main {
+        flex: 2;
+        /* 分栏 */
+        background-color: blanchedalmond;
+        width: 25%;
+        height: 100%;
+    }
+
+    /* 看板娘 */
+    canvas#live2dcanvas {
+        border: 0 !important;
+        left: 1;
+    }
+
+    * {
+        background: blanchedalmond;
+        font-size: 17px;
+        font-family: "楷体"
+    }
+
+    a {
+        text-decoration: none;
+        color: coral;
+    }
+
+    li {
+        color: coral;
+    }
+
+    h1 {
+        color: rgb(245, 99, 46);
+    }
+</style>
+
+<body>
+    <div class="outer">
+        <div class="main">
+            <ol>
+                <h1>讲义</h1>
+                <li>
+                    <p><a href="./资料/index.html">数据结构与算法</a></p>
+                </li>
+                <li>
+                    <p><a href="./Python基础讲义/Python基础讲义/index.html">Python基础讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./python-web基础(5.1.2版本)/index.html">python-web基础(5.1.2版本)</a></p>
+                </li>
+                <li>
+                    <p><a href="./git讲义/index.html">git讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./redis讲义/redis讲义/index.html">redis讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./Django框架/Django框架/index.html">Django框架</a></p>
+                </li>
+                <li>
+                    <p><a href="./美多商城讲义/index.html">美多商城讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./DjangoRESTframework讲义/index.html">DjangoRESTframework讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./Vue组件讲义/index.html">Vue组件讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./vue讲义/vue讲义/index.html">vue讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./美多商城后台讲义/index.html">美多商城后台讲义</a></p>
+                </li>
+                <li>
+                    <p><a href="./项目部署/index.html">项目部署</a></p>
+                </li>
+                <li>
+                    <p><a href="./Flask课件/index.html">Flask课件</a></p>
+                </li>
+                <li>
+                    <p><a href="./黑马头条项目课件/index.html">黑马头条项目</a></p>
+                </li>
+                <li>
+                    <p><a href="./机器学习（科学计算库）/机器学习（科学计算库）/index.html">机器学习（科学计算库）</a></p>
+                </li>
+                <li>
+                    <p><a href="./机器学习（算法篇）/机器学习（算法篇）/index.html">机器学习（算法篇）</a></p>
+                </li>
+                <li>
+                    <p><a href="./新版推荐系统传统8天讲义/index.html">推荐系统（新版）</a></p>
+                </li>
+                <li>
+                    <p><a href="./黑马头条推荐课件V1.0/index.html">黑马头条推荐课件V1.0</a></p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="main">
+            <ol>
+                <h1>笔记</h1>
+
+                <li>
+                    <p><a href="./笔记/Linux基础命令.html" id="biji">Linux基础命令</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/vscode远程连接.pdf" id="biji">vscode远程连接</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day1.pdf" id="biji">Flask框架</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day2.pdf" id="biji">返回响应、异常、钩子、上下文</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day3.pdf" id="biji">Flask-restful扩展</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day4.pdf" id="biji">数据库设计、ORM</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day5.pdf" id="biji">查询、优化、redis事务和持久化</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day6.pdf" id="biji">gitflow工作流、JWT认证方案</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day7.pdf" id="biji">七牛云、缓存</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day8.pdf" id="biji">持久存储、定时任务、RPC</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day9.pdf" id="biji">RPC、即时通信</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/课堂笔记day10.pdf" id="biji">ES、单元测试</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/笔记.pdf" id="biji">机器学习</a></p>
+                </li>
+                <ul><li><p><a href="./笔记/总结.pdf" id="biji">总结</a></p></li></ul>
+                <li>
+                    <p><a href="./笔记/Matplotlib、Numpy、Pandas.pdf" id="biji">Matplotlib、Numpy、Pandas</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/Pandas统计、高级应用.pdf" id="biji">Pandas统计、高级应用</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/近邻算法.pdf" id="biji">近邻算法</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/第五天笔记.pdf" id="biji">交叉验证、线性回归</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/第六天笔记.pdf" id="biji">逻辑回归、决策树</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/第七天.pdf" id="biji">集成学习、聚类算法</a></p>
+                </li>
+                <li>
+                    <p><a href="./笔记/机器学习（总）.html" id="biji">机器学习（总）</a></p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="main">
+            <ol>
+                <h1>思维导图</h1>
+
+                <li>
+                    <p><a href="./思维导图/git.pdf" id="daotu">Git</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/redis.pdf" id="daotu">redis</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/django.pdf" id="daotu">Django</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/美多商城.pdf" id="daotu">美多商城</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/DRF框架.pdf" id="daotu">DRF框架</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/回顾.pdf" id="daotu">回顾(Django和DRF) </a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/docker.pdf" id="daotu">Docker</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/机器学习前三天.png" id="daotu">机器学习前三天</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/线性回归.jpg" id="daotu">线性回归</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/算法.jpg" id="daotu">逻辑回归、决策树</a></p>
+                </li>
+                <li>
+                    <p><a href="./思维导图/机器学习（算法篇）.jpg" id="daotu">机器学习（算法篇）</a></p>
+                </li>
+            </ol>
+        </div>
+    </div>
+</body>
+
+</html>
