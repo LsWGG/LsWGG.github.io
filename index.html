@@ -223,29 +223,9 @@
 <p><code>user = User.objects.create_user(username, email, password, **extra_fields)</code></p>
 </li>
 <li><p>用户认证（用户登录）的方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> authenticate</span><br><span class="line">user = authenticate(username=username, password=password, **kwargs)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>处理密码的方法：</p>
-<ul>
-<li>设置密码：<code>set_password(raw_password)</code></li>
-<li>校验密码：<code>check_password(raw_password)</code></li>
-</ul>
-</li>
-<li><p>pipeline操作redis数据库（解决请求过多，网络延迟问题）</p>
-<ol>
-<li><p>创建redis管道</p>
-<p><code>pl = redis_conn.pipeline()</code></p>
-</li>
-<li><p>将redis请求添加到管道</p>
-<p><code>pl.setex()</code></p>
-</li>
-<li><p>执行请求</p>
-<p><code>pl.execute()</code></p>
-</li>
-</ol>
 </li>
 </ul>
-
+    
     
 
     
