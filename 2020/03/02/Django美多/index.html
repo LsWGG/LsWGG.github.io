@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://LsWGG.github.io">
   <title>Django美多 | (*╹▽╹*)欢迎光临</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Django美多商城一、登录注册 创建用户（注册用户）的方法 user &#x3D; User.objects.create_user(username, email, password, **extra_fields)  用户认证（用户登录）的方法">
+  <meta name="description" content="Django美多商城一、登录注册 创建用户（注册用户）的方法 user &#x3D; User.objects.create_user(username, email, password, **extra_fields)  用户认证（用户登录）的方法   12from django.contrib.auth import authenticateuser &#x3D; authenticate(username&#x3D;us">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django美多">
 <meta property="og:url" content="http://lswgg.github.io/2020/03/02/Django%E7%BE%8E%E5%A4%9A/index.html">
 <meta property="og:site_name" content="(*╹▽╹*)欢迎光临">
-<meta property="og:description" content="Django美多商城一、登录注册 创建用户（注册用户）的方法 user &#x3D; User.objects.create_user(username, email, password, **extra_fields)  用户认证（用户登录）的方法">
+<meta property="og:description" content="Django美多商城一、登录注册 创建用户（注册用户）的方法 user &#x3D; User.objects.create_user(username, email, password, **extra_fields)  用户认证（用户登录）的方法   12from django.contrib.auth import authenticateuser &#x3D; authenticate(username&#x3D;us">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-02T08:48:08.000Z">
-<meta property="article:modified_time" content="2020-03-03T11:21:17.335Z">
+<meta property="article:modified_time" content="2020-03-06T07:51:24.262Z">
 <meta property="article:author" content="木子">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
           <span class="post-meta-item-icon">
             <i class="fa fa-keyboard-o"></i>
             <span class="post-meta-item-text">  字数统计: </span>
-            <span class="post-count">114字</span>
+            <span class="post-count">251字</span>
           </span>
         </span>
     
@@ -234,11 +234,17 @@
 <li><p>用户认证（用户登录）的方法</p>
 </li>
 </ul>
-<a id="more"></a>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> authenticate</span><br><span class="line">user = authenticate(username=username, password=password, **kwargs)</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <ul>
+<li><p>判断用户是否登录：</p>
+<ul>
+<li><code>user.is_authenticated()</code></li>
+<li><code>LoginRequiredMixun</code></li>
+</ul>
+</li>
 <li><p>处理密码的方法：</p>
 <ul>
 <li>设置密码：<code>set_password(raw_password)</code></li>
@@ -257,6 +263,23 @@
 <p><code>pl.execute()</code></p>
 </li>
 </ol>
+</li>
+</ul>
+<h3 id="QQ登录"><a href="#QQ登录" class="headerlink" title="QQ登录"></a>QQ登录</h3><p>OAuth：OAuth（开放授权）是一个开放标准，允许用户授权用第三方网站访问登录</p>
+<ol>
+<li>获取Authorization Code</li>
+<li>通过Authorization Code获取Access Token</li>
+<li>通过Access Token获取openid</li>
+</ol>
+<h2 id="二、用户中心"><a href="#二、用户中心" class="headerlink" title="二、用户中心"></a>二、用户中心</h2><ul>
+<li><p>模板数据传递到Vue对象</p>
+<ul>
+<li>通过Javascript做中间桥梁</li>
+</ul>
+</li>
+<li><p>验证邮箱序列化加密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> TimedJSONWebSignatureSerializer <span class="keyword">as</span> TJWSSerializer</span><br><span class="line"><span class="comment"># 序列化</span></span><br><span class="line">serializer = TJWSSerializer(<span class="string">'SECRET_KEY'</span>, expires_in=<span class="number">3600</span>)</span><br><span class="line">data = &#123;<span class="string">'user_id'</span>: self.id, <span class="string">'email'</span>: self.email&#125;</span><br><span class="line">token = serializer.dumps(data).decode()</span><br><span class="line"><span class="comment"># 反序列化</span></span><br><span class="line">serializer = TJWSSerializer(<span class="string">'SECRET_KEY'</span>, expires_in=<span class="number">3600</span>)</span><br><span class="line"><span class="comment"># 过期会报错</span></span><br><span class="line">data = serializer.loads(token)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -371,7 +394,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Django美多商城"><span class="toc-number">1.</span> <span class="toc-text">Django美多商城</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、登录注册"><span class="toc-number">1.1.</span> <span class="toc-text">一、登录注册</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Django美多商城"><span class="toc-number">1.</span> <span class="toc-text">Django美多商城</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、登录注册"><span class="toc-number">1.1.</span> <span class="toc-text">一、登录注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#QQ登录"><span class="toc-number">1.1.1.</span> <span class="toc-text">QQ登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、用户中心"><span class="toc-number">1.2.</span> <span class="toc-text">二、用户中心</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
