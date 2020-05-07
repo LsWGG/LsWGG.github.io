@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://LsWGG.github.io">
   <title>MongDB | (*╹▽╹*)欢迎光临</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、MongoDB简介MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。将数据存储为一个文档，数据结构由键值对组成，文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。 特点：  面向文档存储的数据库，操作简单 可设置任何属性的索引，实现快速排序 可通过本地或者网络创建数据镜像">
+  <meta name="description" content="一、MongoDB简介​        MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。将数据存储为一个文档，数据结构由键值对组成，文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。 特点：  面向文档存储的数据库，操作简单 可设置任何属性的索引，实现快速排序 可通过本地或者网络创建数据镜像">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongDB">
 <meta property="og:url" content="http://lswgg.github.io/2020/05/03/MongDB/index.html">
 <meta property="og:site_name" content="(*╹▽╹*)欢迎光临">
-<meta property="og:description" content="一、MongoDB简介MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。将数据存储为一个文档，数据结构由键值对组成，文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。 特点：  面向文档存储的数据库，操作简单 可设置任何属性的索引，实现快速排序 可通过本地或者网络创建数据镜像">
+<meta property="og:description" content="一、MongoDB简介​        MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。将数据存储为一个文档，数据结构由键值对组成，文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。 特点：  面向文档存储的数据库，操作简单 可设置任何属性的索引，实现快速排序 可通过本地或者网络创建数据镜像">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tupian-1300728887.cos.ap-chengdu.myqcloud.com/MangoDB%E6%88%90%E5%8A%9F.png">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2013/10/2875754375-5a19268f0fd9b_articlex.jpeg">
 <meta property="article:published_time" content="2020-05-03T02:51:33.000Z">
-<meta property="article:modified_time" content="2020-05-05T07:49:15.659Z">
+<meta property="article:modified_time" content="2020-05-07T13:23:46.883Z">
 <meta property="article:author" content="木子">
 <meta property="article:tag" content="NoSQL">
 <meta name="twitter:card" content="summary">
@@ -201,7 +201,7 @@
           <span class="post-meta-item-icon">
             <i class="fa fa-keyboard-o"></i>
             <span class="post-meta-item-text">  字数统计: </span>
-            <span class="post-count">3.9k字</span>
+            <span class="post-count">6.6k字</span>
           </span>
         </span>
     
@@ -210,7 +210,7 @@
           <span class="post-meta-item-icon">
             <i class="fa fa-hourglass-half"></i>
             <span class="post-meta-item-text">  阅读时长: </span>
-            <span class="post-count">15分</span>
+            <span class="post-count">26分</span>
           </span>
         </span>
     </div>
@@ -230,7 +230,7 @@
 </p>
     </center>
     
-    <h1 id="一、MongoDB简介"><a href="#一、MongoDB简介" class="headerlink" title="一、MongoDB简介"></a>一、MongoDB简介</h1><p><strong>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。</strong>将数据存储为一个文档，数据结构由键值对组成，文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
+    <h1 id="一、MongoDB简介"><a href="#一、MongoDB简介" class="headerlink" title="一、MongoDB简介"></a>一、MongoDB简介</h1><p>​        <strong>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。</strong>将数据存储为一个文档，数据结构由键值对组成，文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
 <p><strong>特点：</strong></p>
 <ul>
 <li>面向文档存储的数据库，操作简单</li>
@@ -247,7 +247,7 @@
 <li>创建D:\mongodb\data\db目录，用来存放数据库数据，</li>
 <li>并在D:\mongodb目录下创建mongo.config，在文件内部复制如下文本：</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##数据文件  此处=后对应到数据所存放的目录</span></span><br><span class="line">dbpath=d:\mongodb\data\db</span><br><span class="line"><span class="comment">##日志文件  此处=后对应到日志文件所在路径</span></span><br><span class="line">logpath=d:\mongodb\data\<span class="built_in">log</span>\mongodb.log</span><br><span class="line"><span class="comment">##错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件，而不是从新创建一个新文件</span></span><br><span class="line">logappend=<span class="literal">true</span> </span><br><span class="line"><span class="comment">#启用日志文件，默认启用</span></span><br><span class="line">journal=<span class="literal">true</span> </span><br><span class="line"><span class="comment">#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false</span></span><br><span class="line">quiet=<span class="literal">true</span> </span><br><span class="line"><span class="comment">#端口号 默认为27017</span></span><br><span class="line">port=27017</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据文件  此处=后对应到数据所存放的目录</span></span><br><span class="line">dbpath=d:\mongodb\data\db</span><br><span class="line"><span class="comment"># 日志文件  此处=后对应到日志文件所在路径</span></span><br><span class="line">logpath=d:\mongodb\data\<span class="built_in">log</span>\mongodb.log</span><br><span class="line"><span class="comment"># 错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件，而不是从新创建一个新文件</span></span><br><span class="line">logappend=<span class="literal">true</span> </span><br><span class="line"><span class="comment">#启用日志文件，默认启用</span></span><br><span class="line">journal=<span class="literal">true</span> </span><br><span class="line"><span class="comment">#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false</span></span><br><span class="line">quiet=<span class="literal">true</span> </span><br><span class="line"><span class="comment">#端口号 默认为27017</span></span><br><span class="line">port=27017</span><br></pre></td></tr></table></figure>
 
 <p><strong>测试是否安装成功</strong></p>
 <ul>
@@ -419,7 +419,7 @@
 </tbody></table>
 <ul>
 <li>在indexes中插入数据，可创建索引</li>
-<li>users是可乙修改的</li>
+<li>users是可以修改的</li>
 <li>profile是可以删除的</li>
 </ul>
 <h3 id="2-5-MongoDB数据类型"><a href="#2-5-MongoDB数据类型" class="headerlink" title="2.5 MongoDB数据类型"></a>2.5 MongoDB数据类型</h3><table>
@@ -500,7 +500,7 @@
 <p><img src="https://www.runoob.com/wp-content/uploads/2013/10/2875754375-5a19268f0fd9b_articlex.jpeg" alt="img"></p>
 <p>​        MongoDB 中存储的文档必须有一个 _id 键。这个键的值可以是任何类型的，默认是个 ObjectId 对象</p>
 <p>由于 ObjectId 中保存了创建的时间戳，可以通过 getTimestamp 函数来获取文档的创建时间:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; var newObject = ObjectId()</span><br><span class="line">&gt; newObject.getTimestamp()</span><br><span class="line">ISODate(<span class="string">"2017-11-25T07:21:10Z"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">newObject = ObjectId()</span><br><span class="line">newObject.getTimestamp()</span><br><span class="line">ISODate(<span class="string">"2017-11-25T07:21:10Z"</span>)</span><br><span class="line"><span class="comment"># ObjectId转字符串</span></span><br><span class="line">str_objectid = ObjectId().str</span><br><span class="line">typeof str_objectid</span><br><span class="line">string</span><br></pre></td></tr></table></figure>
 
 <h1 id="二、MongoDB操作"><a href="#二、MongoDB操作" class="headerlink" title="二、MongoDB操作"></a>二、MongoDB操作</h1><h2 id="1-数据库操作"><a href="#1-数据库操作" class="headerlink" title="1. 数据库操作"></a>1. 数据库操作</h2><p>创建数据库：<code>use DATABASE_NAME</code></p>
 <p>查看所有数据库：<code>show dbs</code></p>
@@ -629,6 +629,8 @@
 <p>执行顺序：sort()  –&gt;  skip()  –&gt;  limit()</p>
 </blockquote>
 <h2 id="4-索引"><a href="#4-索引" class="headerlink" title="4. 索引"></a>4. 索引</h2><p>创建：<code>db.collection.createindex(keys, options)</code></p>
+<p>创建数组索引：<code>db.collection.ensureIndex()</code></p>
+<p>为子文档创建索引：<code>db.users.ensureIndex({&quot;address.city&quot;:1,&quot;address.state&quot;:1,&quot;address.pincode&quot;:1})</code></p>
 <ul>
 <li>keys：创建索引的字段，可有多个，1为升序反之倒序</li>
 <li>options：可选参数<ol>
@@ -653,6 +655,22 @@
 <ul>
 <li>索引关键字段必须是 Date 类型。</li>
 <li>非立即执行：扫描 Document 过期数据并删除是独立线程执行，默认 60s 扫描一次，删除也不一定是立即删除成功</li>
+</ul>
+<p><strong>查询限制</strong></p>
+<p>索引不能被以下的查询使用：</p>
+<ul>
+<li>正则表达式及非操作符，如 $nin, $not, 等。</li>
+<li>算术运算符，如 $mod, 等。</li>
+<li>$where 子句</li>
+</ul>
+<p>索引限制：</p>
+<p>如果现有的索引字段的值超过索引键的限制，MongoDB中不会创建索引。</p>
+<p>如果文档的索引字段值超过了索引键的限制，MongoDB不会将任何文档转换成索引的集合。</p>
+<p>最大范围：</p>
+<ul>
+<li>集合中索引不能超过64个</li>
+<li>索引名的长度不能超过128个字符</li>
+<li>一个复合索引最多可以有31个字段</li>
 </ul>
 <h2 id="5-聚合"><a href="#5-聚合" class="headerlink" title="5. 聚合"></a>5. 聚合</h2><p>aggregate()方法：<code>db.collection_name(aggregate_opeation)</code></p>
 <table>
@@ -767,6 +785,280 @@
 </li>
 </ol>
 <p>可参考：<a href="https://blog.csdn.net/qq_37142346/java/article/details/82824132" target="_blank" rel="noopener">https://blog.csdn.net/qq_37142346/java/article/details/82824132</a></p>
+<h2 id="3-备份与恢复"><a href="#3-备份与恢复" class="headerlink" title="3. 备份与恢复"></a>3. 备份与恢复</h2><p>数据备份：<code>mongodump -h dbhost -d dbname -o dbdirectory</code></p>
+<ul>
+<li>-h：MongoDB所在服务器地址，默认为： localhost:27017</li>
+<li>-d：需要备份的数据库实例，例如：test</li>
+<li>-o：备份的数据存放位置，例如：c:\data\dump</li>
+</ul>
+<p>mongodump 命令可选参数列表如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="left">描述</th>
+<th align="left">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">mongodump –host HOST_NAME –port PORT_NUMBER</td>
+<td align="left">该命令将备份所有MongoDB数据</td>
+<td align="left">mongodump –host runoob.com –port 27017</td>
+</tr>
+<tr>
+<td align="left">mongodump –dbpath DB_PATH –out BACKUP_DIRECTORY</td>
+<td align="left"></td>
+<td align="left">mongodump –dbpath /data/db/ –out /data/backup/</td>
+</tr>
+<tr>
+<td align="left">mongodump –collection COLLECTION –db DB_NAME</td>
+<td align="left">该命令将备份指定数据库的集合。</td>
+<td align="left">mongodump –collection mycol –db test</td>
+</tr>
+</tbody></table>
+<p>数据恢复：<code>mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d dbname &lt;path&gt;</code></p>
+<ul>
+<li><p>–host &lt;:port&gt;, -h &lt;:port&gt;：MongoDB所在服务器地址</p>
+</li>
+<li><p>–db , -d ：需要恢复的数据库实例，例如：test</p>
+</li>
+<li><p>–drop：恢复的时候，先删除当前数据，然后恢复备份的数据。</p>
+</li>
+<li><p><path>：mongorestore 最后的一个参数，设置备份数据所在位置</p>
+<blockquote>
+<p>例：c:\data\dump\test</p>
+</blockquote>
+</li>
+<li><p>–dir：指定备份的目录</p>
+<blockquote>
+<p>不能同时指定 <path> 和 –dir 选项。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-监控"><a href="#4-监控" class="headerlink" title="4. 监控"></a>4. 监控</h2><p><strong>mongostat命令</strong></p>
+<p>获取mongoDB的运行状态：mongostat</p>
+<p><strong>mongotop命令</strong></p>
+<p>跟踪一个MongoDB的实例，查看哪些读取和写入数据在花费大量的时间：mongotop <sleeptime></p>
+<ul>
+<li>等待时间长度，以秒为单位</li>
+</ul>
+<h1 id="四、MongoDB高级"><a href="#四、MongoDB高级" class="headerlink" title="四、MongoDB高级"></a>四、MongoDB高级</h1><h2 id="1-MongoDB关系"><a href="#1-MongoDB关系" class="headerlink" title="1. MongoDB关系"></a>1. MongoDB关系</h2><p>​        MongoDB的关系表示多个文档之间在逻辑上的相互关系，文档间可以通过<strong>嵌入</strong>和<strong>引用</strong>来建立联系。</p>
+<ul>
+<li>一对一</li>
+<li>一对多</li>
+<li>多对一</li>
+<li>多对多</li>
+</ul>
+<p><strong>嵌入式关系</strong>：把用户地址嵌入到用户的文档中（一张表，数据量大的话，影响性能）</p>
+<blockquote>
+<p>查询用户地址：<code>db.users.findOne({&quot;name&quot;:&quot;Tom Benzamin&quot;},{&quot;address&quot;:1})</code></p>
+</blockquote>
+<p><strong>引用式关系</strong>：通过引用文档的 <strong>id</strong> 字段来建立关系，外键</p>
+<ol>
+<li><p>查询用户地址对象id</p>
+<p><code>var result = db.users.findOne({&quot;name&quot;:&quot;Tom Benzamin&quot;},{&quot;address_ids&quot;:1})</code></p>
+</li>
+<li><p>通过查询的id获取用户的详细地址信息</p>
+<p><code>var addresses = db.address.find({&quot;_id&quot;:{&quot;$in&quot;:result[&quot;address_ids&quot;]}})</code></p>
+</li>
+</ol>
+<blockquote>
+<p>findOne不能写成find，find返回的是数组，findOne返回的是对象</p>
+</blockquote>
+<h2 id="2-引用操作"><a href="#2-引用操作" class="headerlink" title="2. 引用操作"></a>2. 引用操作</h2><p>MongoDB引用有两种：手动引用（Manual References）和DBRefs</p>
+<p><strong>DBRefs</strong></p>
+<p>形式：<code>{$ref : , $id : , $db : }</code></p>
+<ul>
+<li>$ref：集合名称</li>
+<li>$id：引用的id</li>
+<li>$db:数据库名称，可选参数</li>
+</ul>
+<p><strong>覆盖查询：</strong></p>
+<ul>
+<li>所有的查询字段是索引的一部分</li>
+<li>所有的查询返回字段在同一个索引中</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>在 users 集合中创建联合索引，字段为 gender 和 user_name :</p>
+<p><code>db.users.ensureIndex({gender:1,user_name:1})</code></p>
+</li>
+<li><p>该索引会覆盖以下查询：</p>
+<p><code>db.users.find({gender:&quot;M&quot;},{user_name:1,_id:0})</code></p>
+</li>
+<li><p>没有排除_id，查询就不会被覆盖</p>
+<p><code>db.users.find({gender:&quot;M&quot;},{user_name:1})</code></p>
+</li>
+</ol>
+</blockquote>
+<p><strong>查询分析：</strong>可以确保建立的索引是否有效，是查询语句性能分析的重要工具。</p>
+<ol>
+<li><p>explain()：查询信息，使用索引及查询统计等</p>
+<p><code>db.users.find({gender:&quot;M&quot;},{user_name:1,_id:0}).explain()</code></p>
+</li>
+<li><p>hint()：指定使用某个索引字段来查询</p>
+<p><code>db.users.find({gender:&quot;M&quot;},{user_name:1,_id:0}).hint({gender:1,user_name:1})</code></p>
+</li>
+</ol>
+<h2 id="3-原子操作"><a href="#3-原子操作" class="headerlink" title="3. 原子操作"></a>3. 原子操作</h2><p>​        mongodb不支持事务，但是mongodb提供了许多原子操作，比如文档的保存，修改，删除等，都是原子操作。要么成功要么失败，达到数据完整性</p>
+<h3 id="3-1-原子操作常用命令"><a href="#3-1-原子操作常用命令" class="headerlink" title="3.1 原子操作常用命令"></a>3.1 原子操作常用命令</h3><p><strong>$set：</strong>用来指定一个键并更新键值，若键不存在并创建。</p>
+<p><code>{ $set :{ field : value}}</code></p>
+<blockquote>
+<p>例：<code>db.col.update({&quot;gender&quot;:&quot;M&quot;},{$set:{&quot;gender&quot;: &quot;A&quot;}})</code></p>
+</blockquote>
+<p><strong>$unset：</strong>用来删除一个键</p>
+<p><code>{ $unset : { field : 1} }</code></p>
+<blockquote>
+<p>例：<code>db.col.update({&quot;gender&quot;:&quot;A&quot;},{$unset:{&quot;gender&quot;: 1}})</code></p>
+</blockquote>
+<p><strong>$inc：</strong>对文档的某个值为数字型（只能为满足要求的数字）的键进行增减的操作。</p>
+<p><code>{ $inc : { field : value } }</code></p>
+<blockquote>
+<p>例：<code>db.col.update({},{$inc:{&quot;num&quot;: 10}})</code></p>
+</blockquote>
+<p><strong>$push：</strong>把value追加到field里面去，field一定要是数组类型才行</p>
+<p><code>{ $push : { field : value } }</code></p>
+<blockquote>
+<p>例：<code>db.col.update({&quot;_id&quot;: 1},{$push:{age:22}})</code></p>
+<p>添加多个字段到数组</p>
+<p>例：<code>db.col.update({&quot;_id&quot;: 1},{$push:{age: {$each: [1,2,3]}}})</code></p>
+</blockquote>
+<p><strong>$pull：</strong>从数组field内删除一个等于value值</p>
+<p><code>{ $pull: { &lt;field1&gt;: &lt;value|condition&gt;, &lt;field2&gt;: &lt;value|condition&gt;, ... } }</code></p>
+<blockquote>
+<p>例：<code>db.col.update({}, {$pull:{age:24}})</code></p>
+</blockquote>
+<p><strong>$pop：</strong>删除数组的第一个（-1）或最后一个（1）元素</p>
+<p><code>{ $pop : { field : 1 } }</code></p>
+<blockquote>
+<p>例：<code>db.col.update({}, {$pop:{&quot;age&quot;:1}})</code></p>
+</blockquote>
+<p><strong>$rename:</strong>修改字段名称</p>
+<p><code>{ $rename : { old_field_name : new_field_name } }</code></p>
+<blockquote>
+<p>例：<code>db.col.update({}, {$rename: {&quot;age&quot;:&quot;age1&quot;}})</code></p>
+</blockquote>
+<h2 id="4-Map-Reduce"><a href="#4-Map-Reduce" class="headerlink" title="4. Map-Reduce"></a>4. Map-Reduce</h2><p>​        Map-Reduce是一种计算模型，将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.collection.mapReduce(</span><br><span class="line">   <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;emit(key,value);&#125;,  <span class="comment">// map 函数</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span>(<span class="params">key,values</span>) </span>&#123;<span class="keyword">return</span> reduceFunction&#125;,   <span class="comment">// reduce 函数</span></span><br><span class="line">   &#123;</span><br><span class="line">      out: collection,</span><br><span class="line">      query: <span class="built_in">document</span>,</span><br><span class="line">      sort: <span class="built_in">document</span>,</span><br><span class="line">      limit: number</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 MapReduce 要实现两个函数： Map 函数和 Reduce 函数。</p>
+<p>Map 函数调用 emit(key, value), 遍历 collection 中所有的记录, 将 key 与 value 传递给 Reduce 函数进行处理。</p>
+</blockquote>
+<p><strong>Map 函数必须调用 emit(key, value) 返回键值对。</strong></p>
+<p>参数说明:</p>
+<ul>
+<li><strong>map</strong> ：映射函数 (生成键值对序列,作为 reduce 函数参数)。</li>
+<li><strong>reduce</strong> 统计函数，reduce函数的任务就是将key-values变成key-value，也就是把values数组变成一个单一的值value。</li>
+<li><strong>out</strong> 统计结果存放集合 (不指定则使用临时集合,在客户端断开后自动删除)。<ul>
+<li>可选参数：inline    <code>out: {inline: 1}</code></li>
+<li>不会创建集合，整个操作都在内存里运行==（结果集单个文档大小&lt;16MB）==</li>
+</ul>
+</li>
+<li><strong>query</strong> 一个筛选条件，只有满足条件的文档才会调用map函数。（query。limit，sort可以随意组合）</li>
+<li><strong>sort</strong> 和limit结合的sort排序参数（也是在发往map函数前给文档排序），可以优化分组机制</li>
+<li><strong>limit</strong> 发往map函数的文档数量的上限（要是没有limit，单独使用sort的用处不大）</li>
+</ul>
+<blockquote>
+<p>例：将在 posts 集合中使用 mapReduce 函数来选取已发布的文章(status:”active”)，并通过user_name分组，计算每个用户的文章数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.posts.mapReduce( </span><br><span class="line">   <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; emit(<span class="keyword">this</span>.user_name,<span class="number">1</span>); &#125;, 	<span class="comment">// map</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span>(<span class="params">key, values</span>) </span>&#123;<span class="keyword">return</span> <span class="built_in">Array</span>.sum(values)&#125;,  <span class="comment">// Arraty：将数组或列表或多个值存储为一个键	reduce</span></span><br><span class="line">      &#123;  </span><br><span class="line">         query:&#123;<span class="attr">status</span>:<span class="string">"active"</span>&#125;,  	<span class="comment">// quert：筛选条件</span></span><br><span class="line">         out:<span class="string">"post_total"</span> 			<span class="comment">// out：结果存储集合</span></span><br><span class="line">      &#125;</span><br><span class="line">).find()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="5-全文检索"><a href="#5-全文检索" class="headerlink" title="5. 全文检索"></a>5. 全文检索</h2><p>​        对每一个词建立一个索引，指明该词在文章中出现的次数和位置，当用户查询时，检索程序就根据事先建立的索引进行查找，并将查找的结果反馈给用户的检索方式。</p>
+<ol>
+<li><p><strong>启动</strong></p>
+<p>2.6版本后默认开启，小于2.6版本启动命令:</p>
+<p><code>db.adminCommand({setParameter:true,textSearchEnabled:true})</code> </p>
+<p>&amp;&amp;</p>
+<p> <code>mongod --setParameter textSearchEnabled=true</code></p>
+</li>
+<li><p><strong>创建</strong></p>
+<blockquote>
+<p>创建posts集合文档数据，包含文章内容（post_text）及标签(tags)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;post_text&quot;: &quot;enjoy the mongodb articles on Runoob&quot;,</span><br><span class="line">   &quot;tags&quot;: [</span><br><span class="line">      &quot;mongodb&quot;,</span><br><span class="line">      &quot;runoob&quot;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p>对post_text字段建立全文索引：<code>db.posts.ensureIndex({post_text:&quot;text&quot;})</code></p>
+</li>
+<li><p>使用</p>
+<p>搜索文章中的关键词 runoob：<code>db.posts.find({$text:{$search:&quot;runoob&quot;}})</code></p>
+<blockquote>
+<p>使用全文检索可以提高查询效率</p>
+</blockquote>
+</li>
+<li><p>删除</p>
+<p><code>db.posts.dropIndex(&quot;post_text_text&quot;)</code></p>
+</li>
+</ol>
+<h2 id="6-正则表达式"><a href="#6-正则表达式" class="headerlink" title="6. 正则表达式"></a>6. 正则表达式</h2><p><strong>使用：$regex</strong></p>
+<p><code>db.posts.find({post_text:{$regex:&quot;runoob&quot;}})</code></p>
+<p>&amp;&amp;</p>
+<p><code>db.posts.find({post_text:/runoob/})</code></p>
+<p>不区分大小写：<code>db.posts.find({post_text:{$regex:&quot;runoob&quot;,$options:&quot;$i&quot;}})</code></p>
+<p><strong>数组元素使用正则表达式</strong></p>
+<blockquote>
+<p>例：查找run 开头的标签数据(ru 或 run 或 runoob)</p>
+<p><code>db.posts.find({tags:{$regex:&quot;run&quot;}})</code></p>
+</blockquote>
+<h3 id="6-1-优化"><a href="#6-1-优化" class="headerlink" title="6.1 优化"></a>6.1 优化</h3><ul>
+<li><p>索引字段查询速度高于正则匹配</p>
+</li>
+<li><p>如果正则表达式是前缀表达式，所有匹配的数据将以指定的前缀字符串为开始</p>
+<blockquote>
+<p>例：^tut        匹配以tut为开头的字符串</p>
+</blockquote>
+</li>
+<li><p>正则表达式中使用变量。一定要使用eval将组合的字符串进行转换，不能直接将字符串拼接后传入给表达式。否则没有报错信息，只是结果为空！</p>
+<blockquote>
+<p>例：<code>name=eval(&quot;/&quot; + 变量值key +&quot;/i&quot;);</code></p>
+<p>例：模糊查询包含title关键词, 且不区分大小写<code>title:eval(&quot;/&quot;+title+&quot;/i&quot;)</code>    </p>
+<ul>
+<li>同：<code>title:{$regex:title,$Option:&quot;$i&quot;}</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="7-GridFS"><a href="#7-GridFS" class="headerlink" title="7. GridFS"></a>7. GridFS</h2><p>​        GridFS 用于存储和恢复那些超过16M（BSON文件限制）的文件(如：图片、音频、视频等)。也是文件存储的一种方式，但是它是存储在MonoDB的集合中。将大文件对象分割成多个小的chunk(文件片段),一般为256k/个,每个chunk将作为MongoDB的一个文档(document)被存储在chunks集合中。</p>
+<ul>
+<li><p>用两个集合来存储一个文件</p>
+<p><strong>fs.files：</strong>每个文件的实际内容被存在chunks(二进制数据)中</p>
+<p><strong>fs.chunks：</strong>和文件有关的meta数据(filename,content_type,还有用户自定义的属性)将会被存在files集合中。</p>
+</li>
+</ul>
+<p><strong>GridFS添加文件</strong></p>
+<blockquote>
+<p>例：添加mp3文件</p>
+<p><code>mongofiles.exe -d gridfs put song.mp3</code></p>
+<p><code>-d gridfs</code>：指定存储文件的数据库名称，未指定会自动创建</p>
+</blockquote>
+<p>查看数据库中文件的文档：<code>db.fs.files.find()</code></p>
+<p>根据 _id 获取区块(chunk)的数据：</p>
+<p><code>db.fs.chunks.find({files_id:ObjectId(&#39;534a811bf8b4aa4d33fdf94d&#39;)})</code></p>
+<h2 id="8-固定集合"><a href="#8-固定集合" class="headerlink" title="8. 固定集合"></a>8. 固定集合</h2><p>​        固定长度，当集合空间用完后，再插入的元素就会覆盖最初始的头部的元素！可以插入及更新，但不能更新超出collection的大小，不允许删除，但是可以调用drop()删除集合中的所有行，drop后需要显式地重建集合。</p>
+<ul>
+<li>对固定集合进行插入速度极快</li>
+<li>按照插入顺序的查询输出速度极快</li>
+<li>能够在插入最新数据时,淘汰最早的数据</li>
+</ul>
+<p><strong>创建</strong></p>
+<p><code>db.createCollection(&quot;cappedLogCollection&quot;,{capped:true,size:10000})</code></p>
+<p>指定文档个数</p>
+<p><code>db.createCollection(&quot;cappedLogCollection&quot;,{capped:true,size:10000,max:1000})</code></p>
+<ul>
+<li><strong>size(KB)：</strong>整个集合空间的大小</li>
+<li><strong>max(个)：</strong>文档数上限</li>
+</ul>
+<p>判断集合是否为固定集合</p>
+<p><code>db.cappedLogCollection.isCapped()</code></p>
+<p>将已存在的集合转为固定集合</p>
+<p><code>db.runCommand({&quot;convertToCapped&quot;:&quot;posts&quot;, size:10000})</code></p>
+<blockquote>
+<p>将已存在的posts集合转为固定集合</p>
+</blockquote>
+<p><strong>查询</strong></p>
+<p>​        固定集合文档按照插入顺序储存的,默认情况下查询就是按照插入顺序返回的,也可以使用$natural调整返回顺序。</p>
+<p><code>db.cappedLogCollection.find().sort({$natural:-1})</code></p>
+<p><strong>用法：</strong>存储日志信息、缓存一些少量的文档</p>
 
     
 
@@ -888,7 +1180,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、MongoDB简介"><span class="toc-number">1.</span> <span class="toc-text">一、MongoDB简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装MangoDB"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装MangoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-概念"><span class="toc-number">1.2.</span> <span class="toc-text">2. 概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-数据库"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-文档"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-集合"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-元数据"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-MongoDB数据类型"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 MongoDB数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、MongoDB操作"><span class="toc-number">2.</span> <span class="toc-text">二、MongoDB操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数据库操作"><span class="toc-number">2.1.</span> <span class="toc-text">1. 数据库操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-集合操作"><span class="toc-number">2.2.</span> <span class="toc-text">2. 集合操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-文档操作"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文档操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-索引"><span class="toc-number">2.4.</span> <span class="toc-text">4. 索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-聚合"><span class="toc-number">2.5.</span> <span class="toc-text">5. 聚合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-管道"><span class="toc-number">2.6.</span> <span class="toc-text">6. 管道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、MongoDB优化"><span class="toc-number">3.</span> <span class="toc-text">三、MongoDB优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-副本集"><span class="toc-number">3.1.</span> <span class="toc-text">1. 副本集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-分片"><span class="toc-number">3.2.</span> <span class="toc-text">2. 分片</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、MongoDB简介"><span class="toc-number">1.</span> <span class="toc-text">一、MongoDB简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装MangoDB"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装MangoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-概念"><span class="toc-number">1.2.</span> <span class="toc-text">2. 概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-数据库"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-文档"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-集合"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-元数据"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-MongoDB数据类型"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 MongoDB数据类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、MongoDB操作"><span class="toc-number">2.</span> <span class="toc-text">二、MongoDB操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数据库操作"><span class="toc-number">2.1.</span> <span class="toc-text">1. 数据库操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-集合操作"><span class="toc-number">2.2.</span> <span class="toc-text">2. 集合操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-文档操作"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文档操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-索引"><span class="toc-number">2.4.</span> <span class="toc-text">4. 索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-聚合"><span class="toc-number">2.5.</span> <span class="toc-text">5. 聚合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-管道"><span class="toc-number">2.6.</span> <span class="toc-text">6. 管道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、MongoDB优化"><span class="toc-number">3.</span> <span class="toc-text">三、MongoDB优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-副本集"><span class="toc-number">3.1.</span> <span class="toc-text">1. 副本集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-分片"><span class="toc-number">3.2.</span> <span class="toc-text">2. 分片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-备份与恢复"><span class="toc-number">3.3.</span> <span class="toc-text">3. 备份与恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-监控"><span class="toc-number">3.4.</span> <span class="toc-text">4. 监控</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、MongoDB高级"><span class="toc-number">4.</span> <span class="toc-text">四、MongoDB高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MongoDB关系"><span class="toc-number">4.1.</span> <span class="toc-text">1. MongoDB关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-引用操作"><span class="toc-number">4.2.</span> <span class="toc-text">2. 引用操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-原子操作"><span class="toc-number">4.3.</span> <span class="toc-text">3. 原子操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-原子操作常用命令"><span class="toc-number">4.3.1.</span> <span class="toc-text">3.1 原子操作常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Map-Reduce"><span class="toc-number">4.4.</span> <span class="toc-text">4. Map-Reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-全文检索"><span class="toc-number">4.5.</span> <span class="toc-text">5. 全文检索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-正则表达式"><span class="toc-number">4.6.</span> <span class="toc-text">6. 正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-优化"><span class="toc-number">4.6.1.</span> <span class="toc-text">6.1 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-GridFS"><span class="toc-number">4.7.</span> <span class="toc-text">7. GridFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-固定集合"><span class="toc-number">4.8.</span> <span class="toc-text">8. 固定集合</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -1006,19 +1298,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>
