@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2013/10/2875754375-5a19268f0fd9b_articlex.jpeg">
 <meta property="article:published_time" content="2020-05-03T02:51:33.000Z">
 <meta property="article:modified_time" content="2020-05-07T13:23:46.883Z">
-<meta property="article:author" content="木子">
+<meta property="article:author" content="木子家❀">
 <meta property="article:tag" content="NoSQL">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://tupian-1300728887.cos.ap-chengdu.myqcloud.com/MangoDB%E6%88%90%E5%8A%9F.png">
@@ -55,7 +55,7 @@
 			<img src="https://tupian-1300728887.cos.ap-chengdu.myqcloud.com/touxiang.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-			<h1 class="header-author"><a href="/">木子</a></h1>
+			<h1 class="header-author"><a href="/">木子家❀</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">人永远不知道自己有多大</p>
@@ -120,7 +120,7 @@
 				<img src="https://tupian-1300728887.cos.ap-chengdu.myqcloud.com/touxiang.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">木子</h1>
+			  <h1 class="header-author js-header-author">木子家❀</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>人永远不知道自己有多大<i class="icon icon-quo-right"></i></p>
@@ -258,7 +258,7 @@
 <p><strong>安装MongoDB服务</strong></p>
 <ul>
 <li><p>执行mongod.exe，使用–install选项来安装服务，使用–config选项来指定之前创建的配置文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\mongodb\bin\mongod.exe --config &quot;C:\mongodb\mongod.cfg&quot; --install</span><br></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\m</span>ongodb<span class="symbol">\b</span>in<span class="symbol">\m</span>ongod.exe --config "C:<span class="symbol">\m</span>ongodb<span class="symbol">\m</span>ongod.cfg" --install</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -738,20 +738,20 @@
 <p><strong>$match</strong>：过滤数据</p>
 <blockquote>
 <p>例：将分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段$group管道操作符进行处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.articles.aggregate([</span><br><span class="line">	&#123; $match : &#123; score : &#123; $gt : 70, $lte : 90 &#125; &#125; &#125;,</span><br><span class="line">	&#123; $group: &#123; _id: null, count: &#123; $sum: 1 &#125; &#125; &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.articles.aggregate([</span><br><span class="line">	&#123; <span class="string">$match :</span> &#123; <span class="string">score :</span> &#123; <span class="string">$gt :</span> <span class="number">70</span>, <span class="string">$lte :</span> <span class="number">90</span> &#125; &#125; &#125;,</span><br><span class="line">	&#123; <span class="string">$group:</span> &#123; <span class="string">_id:</span> <span class="literal">null</span>, <span class="string">count:</span> &#123; <span class="string">$sum:</span> <span class="number">1</span> &#125; &#125; &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><strong>当match和group同时存在时， 顺序会影响检索结果，必须先写 match 在前面</strong></p>
 <h1 id="三、MongoDB优化"><a href="#三、MongoDB优化" class="headerlink" title="三、MongoDB优化"></a>三、MongoDB优化</h1><h2 id="1-副本集"><a href="#1-副本集" class="headerlink" title="1. 副本集"></a>1. 副本集</h2><p>​        将数据同步在多个服务器的过程，提高了数据的可用性， 并可以保证数据的安全性。具有自动灾难恢复。没有固定的主节点</p>
 <p><strong>副本集设置</strong></p>
 <ol>
 <li><p>创建一个cluster文件夹，放node1，node2，node3三个子文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">节点1：</span><br><span class="line">HOST：localhost:10001</span><br><span class="line">Data File：F:\MongoDB\node1</span><br><span class="line"></span><br><span class="line">节点2：</span><br><span class="line">HOST：localhost:10002</span><br><span class="line">Data File：F:\MongoDB\node2</span><br><span class="line"></span><br><span class="line">节点3：</span><br><span class="line">HOST：localhost:10003</span><br><span class="line">Data File：F:\MongoDB\node3</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">节点<span class="number">1</span>：</span><br><span class="line">HOST：localhost:<span class="number">10001</span></span><br><span class="line">Data File：F:\MongoDB\node1</span><br><span class="line"></span><br><span class="line">节点<span class="number">2</span>：</span><br><span class="line">HOST：localhost:<span class="number">10002</span></span><br><span class="line">Data File：F:\MongoDB\node2</span><br><span class="line"></span><br><span class="line">节点<span class="number">3</span>：</span><br><span class="line">HOST：localhost:<span class="number">10003</span></span><br><span class="line">Data File：F:\MongoDB\node3</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>指定 –replSet 选项来启动mongoDB：</p>
 <p><code>mongod --port 端口 --dbpath 文件夹位置 --replSet 副本集名称</code></p>
 <ul>
 <li><p>启动一个新的副本集(初始化操作)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rs.initiate(&#123;</span><br><span class="line">	&quot;_id&quot;:&quot;shinelon&quot;,</span><br><span class="line">	&quot;members&quot;:[ </span><br><span class="line">		&#123;&quot;_id&quot;:1,&quot;host&quot;:&quot;localhost:10001&quot;&#125;,</span><br><span class="line">		&#123;&quot;_id&quot;:2,&quot;host&quot;:&quot;localhost:10002&quot;&#125;,</span><br><span class="line">		&#123;&quot;_id&quot;:3,&quot;host&quot;:&quot;localhost:10003&quot;&#125; </span><br><span class="line">			]</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rs.initiate(&#123;</span><br><span class="line">	<span class="string">"_id"</span>:<span class="string">"shinelon"</span>,</span><br><span class="line">	<span class="string">"members"</span>:[ </span><br><span class="line">		&#123;<span class="string">"_id"</span>:<span class="number">1</span>,<span class="string">"host"</span>:<span class="string">"localhost:10001"</span>&#125;,</span><br><span class="line">		&#123;<span class="string">"_id"</span>:<span class="number">2</span>,<span class="string">"host"</span>:<span class="string">"localhost:10002"</span>&#125;,</span><br><span class="line">		&#123;<span class="string">"_id"</span>:<span class="number">3</span>,<span class="string">"host"</span>:<span class="string">"localhost:10003"</span>&#125; </span><br><span class="line">			]</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看副本集的配置：<code>rs.conf()</code></p>
 </li>
@@ -770,10 +770,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HOST：localhost:27020</span><br><span class="line">Data File：F:\MongoDB\shard\s0</span><br><span class="line"></span><br><span class="line">HOST：localhost:27021</span><br><span class="line">Data File：F:\MongoDB\shard\s1</span><br><span class="line">...\s3</span><br><span class="line">Data File：F:\MongoDB\shard\<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line">&gt; mongod --port 27020 --dbpath=F:\MongoDB\shard\s0 --logpath=F:\MongoDB\shard\<span class="built_in">log</span>\s0.log --logappend --fork</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>启动Config Server（mongodb实例）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HOST：localhost:27100</span><br><span class="line">Data File：F:\MongoDB\shard\config</span><br><span class="line"></span><br><span class="line">&gt; mongod --port 27100 --dbpath&#x3D;F:\MongoDB\shard\config --logpath&#x3D;F:\MongoDB\shard\log\config.log --logappend --fork</span><br></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HOST：localhost:27100</span><br><span class="line">Data File：F:<span class="symbol">\M</span>ongoDB<span class="symbol">\s</span>hard<span class="symbol">\c</span>onfig</span><br><span class="line"></span><br><span class="line">&gt; mongod --port 27100 --dbpath=F:<span class="symbol">\M</span>ongoDB<span class="symbol">\s</span>hard<span class="symbol">\c</span>onfig --logpath=F:<span class="symbol">\M</span>ongoDB<span class="symbol">\s</span>hard<span class="symbol">\l</span>og<span class="symbol">\c</span>onfig.log --logappend --fork</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>启动Route Process（mongos路由进程：应用连接它来发送请求，知道数据在分片中的位置，收集返回数据）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; mongos --port 40000 --configdb localhost:27100 --fork --logpath&#x3D;F:\MongoDB\shard\log\route.log --chunkSize 500</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">mongos</span> --<span class="comment">port</span> <span class="comment">40000</span> --<span class="comment">configdb</span> <span class="comment">localhost:27100</span> --<span class="comment">fork</span> --<span class="comment">logpath=F:\MongoDB\shard\log\route</span><span class="string">.</span><span class="comment">log</span> --<span class="comment">chunkSize</span> <span class="comment">500</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>chunkSize这一项是用来指定chunk的大小的，单位是MB，默认大小为200MB.</p>
@@ -974,7 +974,7 @@
 <li><p><strong>创建</strong></p>
 <blockquote>
 <p>创建posts集合文档数据，包含文章内容（post_text）及标签(tags)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;post_text&quot;: &quot;enjoy the mongodb articles on Runoob&quot;,</span><br><span class="line">   &quot;tags&quot;: [</span><br><span class="line">      &quot;mongodb&quot;,</span><br><span class="line">      &quot;runoob&quot;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"post_text"</span>: <span class="string">"enjoy the mongodb articles on Runoob"</span>,</span><br><span class="line">   <span class="attr">"tags"</span>: [</span><br><span class="line">      <span class="string">"mongodb"</span>,</span><br><span class="line">      <span class="string">"runoob"</span></span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 </blockquote>
@@ -1201,6 +1201,34 @@
 
 
 
+
+
+  
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:#fff}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+        </style>
+        <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var notify = 'false' == true ? true : false;
+  var verify = 'false' == true ? true : false;
+  new Valine({
+    av: AV,
+    el: '#vcomment',
+    notify: notify,
+    app_id: "akSt17hH0QhogvnWpUpEWLnX-gzGzoHsz",
+    app_key: "uUDT4jx91daFAfOzduaGbcQu",
+    placeholder: "Just go go",
+    avatar: "mm",
+  });
+</script>
+    </section>
+  
+
           </div>
         </div>
       </div>
@@ -1208,7 +1236,7 @@
 	<div class="outer">
 		<div id="footer-info">
 			<div class="footer-left">
-				&copy; 2020 木子
+				&copy; 2020 木子家❀
 			</div>
 			<div class="footer-right">
 			</div>
@@ -1298,19 +1326,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Luck</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
             
             <div class="clearfix"></div>
