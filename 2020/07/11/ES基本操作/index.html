@@ -16,7 +16,7 @@
 <meta property="og:description" content="Elasticsearch基本操作一、简介Elasticsearch（ES）：一款基于Apache Lucene(TM)的开源的全文检索和分析引擎。通过简单的RESTful API来隐藏其复杂性、同时也做了分布式相关的工作。 Lucene：使用Java实现的一套搜索引擎库。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-11T03:11:47.000Z">
-<meta property="article:modified_time" content="2020-07-11T12:53:14.802Z">
+<meta property="article:modified_time" content="2020-07-19T14:21:07.276Z">
 <meta property="article:author" content="木子家❀">
 <meta property="article:tag" content="ES">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
           <span class="post-meta-item-icon">
             <i class="fa fa-keyboard-o"></i>
             <span class="post-meta-item-text">  字数统计: </span>
-            <span class="post-count">681字</span>
+            <span class="post-count">2.8k字</span>
           </span>
         </span>
     
@@ -207,7 +207,7 @@
           <span class="post-meta-item-icon">
             <i class="fa fa-hourglass-half"></i>
             <span class="post-meta-item-text">  阅读时长: </span>
-            <span class="post-count">2分</span>
+            <span class="post-count">11分</span>
           </span>
         </span>
     </div>
@@ -265,6 +265,209 @@
 <li>域（field）： 文档中的一个数据字段。一个文档由多个域组成。</li>
 <li>分片（shards）：分片是索引的一部分，一个索引由多个分片组成。每个分片可以分布在不同的节点上，ES会根据文档id（也可以指定其他字段）做hash，使用得到的hash值将文档路由到指定分片上。分片是ES做Data Rebalance的最小单元。</li>
 <li>副本（replicas）：创建索引时可以为索引指定0个或者多个副本。副本是分片级别的，即索引的分片由1个主分片（primary shard）和0个或者多个副本分片（replica shard）组成。primary shard可以接受读取和写入请求，replica shard只能接受读取请求。所以副本只能提高数据的可用性和并发读取能力。当primary shard所在服务器的节点挂掉以后，ES会通过leader选举机制将replica shard为primary shard。</li>
+</ol>
+<h2 id="二、基本查询"><a href="#二、基本查询" class="headerlink" title="二、基本查询"></a>二、基本查询</h2><ol>
+<li><p>分页</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"from"</span>: <span class="number">0</span>,  </span><br><span class="line">  <span class="attr">"size"</span>: <span class="number">1</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>from：从第几个商品开始查，最开始是 0</p>
+<p>size：要查几个结果</p>
+</li>
+<li><p>范围查询（range）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"range"</span>: &#123;</span><br><span class="line">      <span class="attr">"price"</span>: &#123;</span><br><span class="line">        <span class="attr">"gte"</span>: <span class="number">400</span>,</span><br><span class="line">        <span class="attr">"lte"</span>: <span class="number">700</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>gt：大于</p>
+<p>gte：大于等于</p>
+<p>lt：小于</p>
+<p>lte：小于等于</p>
+</li>
+</ol>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>查询的字段内容是进行分词处理的，只要分词的单词结果中，在数据中有满足任意的分词结果都会被查询出来</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match"</span>: &#123;</span><br><span class="line">      <span class="attr">"product_name"</span>: <span class="string">"PHILIPS toothbrush"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>operator ：自定义匹配关系</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match"</span>: &#123;</span><br><span class="line">      <span class="attr">"product_name"</span>: &#123;</span><br><span class="line">        <span class="attr">"query"</span>: <span class="string">"PHILIPS toothbrush"</span>,</span><br><span class="line">        <span class="attr">"operator"</span>: <span class="string">"and"</span></span><br><span class="line">      &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>分词概率匹配（分词命中50%就返回）</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match"</span>: &#123;</span><br><span class="line">      <span class="attr">"product_name"</span>: &#123;</span><br><span class="line">        <span class="attr">"query"</span>: <span class="string">"java 程序员 书 推荐"</span>,</span><br><span class="line">        <span class="attr">"minimum_should_match"</span>: <span class="string">"50%"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="multi-match：同一条件匹配多个字段"><a href="#multi-match：同一条件匹配多个字段" class="headerlink" title="multi_match：同一条件匹配多个字段"></a>multi_match：同一条件匹配多个字段</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"multi_match"</span>: &#123;</span><br><span class="line">      <span class="attr">"query"</span>: <span class="string">"toothbrush"</span>,</span><br><span class="line">      <span class="attr">"fields"</span>: [<span class="string">"product_name"</span>,<span class="string">"product_desc"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="match-phrase（短语搜索）"><a href="#match-phrase（短语搜索）" class="headerlink" title="match_phrase（短语搜索）"></a>match_phrase（短语搜索）</h4><p>对查询词不进行分词，必须完全匹配查询词才可以作为结果显示。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match_phrase"</span>: &#123;</span><br><span class="line">      <span class="attr">"product_name"</span>: <span class="string">"PHILIPS toothbrush"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="term和terms"><a href="#term和terms" class="headerlink" title="term和terms"></a>term和terms</h3><p>代表完全匹配，即不进行分词器分析，文档中必须包含整个搜索的词汇</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">      <span class="attr">"filter"</span>:&#123;</span><br><span class="line">        <span class="attr">"term"</span>: &#123;</span><br><span class="line">          <span class="attr">"product_name"</span>: <span class="string">"python"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相比于数据库中的in</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">      <span class="attr">"filter"</span>: &#123;</span><br><span class="line">        <span class="attr">"terms"</span>: &#123;</span><br><span class="line">          <span class="attr">"product_name"</span>: [</span><br><span class="line">            <span class="string">"python"</span>,</span><br><span class="line">            <span class="string">"java"</span></span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="bool"><a href="#bool" class="headerlink" title="bool"></a>bool</h3><p>bool 下包括：</p>
+<ul>
+<li><p>must（必须匹配，类似于数据库的 =）</p>
+</li>
+<li><p>must_not（必须不匹配，类似于数据库的 !=）</p>
+</li>
+<li><p>should（没有强制匹配，类似于数据库的 or）</p>
+<ul>
+<li><p>如果组合查询中没有must条件，可通过minimum_should_match 设置匹配多个</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"bool"</span>: &#123;</span><br><span class="line">      <span class="attr">"should"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: <span class="string">"java"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: <span class="string">"程序员"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"minimum_should_match"</span>: <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>filter（过滤）</p>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"bool"</span>: &#123;</span><br><span class="line">      <span class="attr">"must"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: <span class="string">"PHILIPS toothbrush"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"should"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_desc"</span>: <span class="string">"刷头"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"must_not"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: <span class="string">"HX6730"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"filter"</span>: &#123;</span><br><span class="line">        <span class="attr">"range"</span>: &#123;</span><br><span class="line">          <span class="attr">"price"</span>: &#123;</span><br><span class="line">            <span class="attr">"gte"</span>: <span class="number">33.00</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="boost用法（搜索优先级）"><a href="#boost用法（搜索优先级）" class="headerlink" title="boost用法（搜索优先级）"></a>boost用法（搜索优先级）</h4><p>例：PHILIPS toothbrush，要比：Braun toothbrush 更加优先</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"bool"</span>: &#123;</span><br><span class="line">      <span class="attr">"must"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: <span class="string">"toothbrush"</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"should"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: &#123;</span><br><span class="line">              <span class="attr">"query"</span>: <span class="string">"PHILIPS"</span>,</span><br><span class="line">              <span class="attr">"boost"</span>: <span class="number">4</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"product_name"</span>: &#123;</span><br><span class="line">              <span class="attr">"query"</span>: <span class="string">"Braun"</span>,</span><br><span class="line">              <span class="attr">"boost"</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模糊查询（性能较差）"><a href="#模糊查询（性能较差）" class="headerlink" title="模糊查询（性能较差）"></a>模糊查询（性能较差）</h3><ol>
+<li><p>prefix前缀搜索</p>
+<p>例：iphone-6，iphone-7。搜索 iphone </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"prefix"</span>: &#123;</span><br><span class="line">      <span class="string">"product_name"</span>: &#123;</span><br><span class="line">        <span class="string">"value"</span>: <span class="string">"iphone"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>wildcard通配符搜索</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"wildcard"</span>: &#123;</span><br><span class="line">      <span class="string">"product_name"</span>: &#123;</span><br><span class="line">        <span class="string">"value"</span>: <span class="string">"ipho*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>regexp正则搜索</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"query"</span>: &#123;</span><br><span class="line">    <span class="string">"regexp"</span>: &#123;</span><br><span class="line">      <span class="string">"product_name"</span>: <span class="string">"iphone[0-9].+"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="三、聚合分组"><a href="#三、聚合分组" class="headerlink" title="三、聚合分组"></a>三、聚合分组</h2><p>ElasticSearch除了致力于搜索之外，也提供了聚合实时分析数据的功能，透过聚合，我们可以得到一个数据的概览，分析和总结全套的数据</p>
+<p>对相同的数据进行 搜索/过滤 + 分析，两个愿望一次满足</p>
+<p>聚合的两个主要的概念，分别是 桶 和 指标</p>
+<ul>
+<li><p>桶(Buckets) : 满足特定条件的文档的集合</p>
+<ol>
+<li><p>当聚合开始被执行，每个文档会决定符合哪个桶的条件，如果匹配到，文档将放入相应的桶并接着进行聚合操作</p>
+<blockquote>
+<p>像是一个员工属于男性桶或者女性桶</p>
+</blockquote>
+</li>
+<li><p>桶可以被嵌套在其他桶里面</p>
+<blockquote>
+<p>北京能放在中国桶裡</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>指标(Metrics) : 对桶内的文档进行统计计算</p>
+<ol>
+<li><p>桶能让我们划分文档到有意义的集合， 但是最终我们需要的是对这些桶内的文档进行一些指标的计算</p>
+</li>
+<li><p>指标通常是简单的数学运算(像是min、max、avg、sum）</p>
+<blockquote>
+<p>计算像平均薪资、最高出售价格、95%的查询延迟这样的数据</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><p>当query和aggs一起存在时，会先执行query的主查询，主查询query执行完后会搜出一批结果，而这些结果才会被拿去aggs拿去做聚合</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "query": &#123; ... &#125;,</span><br><span class="line">    "size": 0,</span><br><span class="line">    "aggs": &#123;</span><br><span class="line">        "custom_name1": &#123;  //aggs后面接著的是一个自定义的name</span><br><span class="line">            "桶": &#123; ... &#125;  //再来才是接桶</span><br><span class="line">        &#125;,</span><br><span class="line">        "custom_name2": &#123;  //一个aggs裡可以有很多聚合</span><br><span class="line">            "桶": &#123; ... &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        "custom_name3": &#123;</span><br><span class="line">            "桶": &#123;</span><br><span class="line">               .....</span><br><span class="line">            &#125;,</span><br><span class="line">            "aggs": &#123;  //aggs可以嵌套在别的aggs裡面</span><br><span class="line">                "in_name": &#123; //记得使用aggs需要先自定义一个name</span><br><span class="line">                    "桶": &#123; ... &#125; //in_name的桶作用的文档是custom_name3的桶的结果</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见的桶"><a href="#常见的桶" class="headerlink" title="常见的桶"></a>常见的桶</h3><ol>
+<li><p>terms桶 : 针对某个field的值进行分组，field有几种值就分成几组</p>
+<ul>
+<li><p>terms桶在进行分组时，会爲此field中的每种值创建一个新的桶</p>
+</li>
+<li><p>要注意此 “terms桶” 和平常用在主查询query中的 “查找terms” 是不同的东西</p>
+<blockquote>
+<p>测试数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">"color"</span>: <span class="string">"red"</span> &#125;</span><br><span class="line">&#123; <span class="attr">"color"</span>: <span class="string">"green"</span> &#125;</span><br><span class="line">&#123; <span class="attr">"color"</span>: [<span class="string">"red"</span>, <span class="string">"blue"</span>] &#125;</span><br></pre></td></tr></table></figure>
+
+<p>dsl语句</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match_all"</span>: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"size"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">        <span class="attr">"my_name"</span>: &#123;</span><br><span class="line">            <span class="attr">"terms"</span>: &#123;</span><br><span class="line">                <span class="attr">"field"</span>: <span class="string">"color"</span> <span class="comment">//使用color来进行分组</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">"aggregations": &#123;</span><br><span class="line">    "my_name": &#123;</span><br><span class="line">        "doc_count_error_upper_bound": 0,</span><br><span class="line">        "sum_other_doc_count": 0,</span><br><span class="line">        "buckets": [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"key"</span>: <span class="string">"blue"</span>,</span><br><span class="line">                <span class="attr">"doc_count"</span>: <span class="number">1</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"key"</span>: <span class="string">"red"</span>,</span><br><span class="line">                <span class="attr">"doc_count"</span>: <span class="number">2</span>  <span class="comment">//表示color为red的文档有2个，此例中就是 &#123;"color": "red"&#125; 和 &#123;"color": ["red", "blue"]&#125;这两个文档</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"key"</span>: <span class="string">"green"</span>,</span><br><span class="line">                <span class="attr">"doc_count"</span>: <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>filter桶 : 一个用来过滤的桶</p>
+<ul>
+<li><p>要注意此处的 “filter桶” 和用在主查询query的 “过滤filter” 的用法是一模一样的，都是过滤，不过差别是 “filter桶” 会自己给创建一个新的桶，而不会像 “过滤filter” 一样依附在query下，因为filter桶毕竟还是一个聚合桶，因此他可以和别的桶进行嵌套，但他不是依附在别的桶上</p>
+<blockquote>
+<p>测试数据</p>
+<p>同上</p>
+<p>dsl语句</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match_all"</span>: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"size"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">        <span class="attr">"my_name"</span>: &#123;</span><br><span class="line">            <span class="attr">"filter"</span>: &#123; <span class="comment">//因为他用法跟一般的过滤filter一样，所以也能使用bool嵌套</span></span><br><span class="line">                <span class="attr">"bool"</span>: &#123;</span><br><span class="line">                    <span class="attr">"must"</span>: &#123;</span><br><span class="line">                        <span class="attr">"terms"</span>: &#123; <span class="comment">//注意此terms是查找terms，不是terms桶</span></span><br><span class="line">                            <span class="attr">"color"</span>: [ <span class="string">"red"</span>, <span class="string">"blue"</span> ]</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"aggregations": &#123;</span><br><span class="line">    "my_name": &#123;</span><br><span class="line">        "doc_count": 2 //filter桶计算出来的文档数量</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>top_hits桶 : 在某个桶底下找出这个桶的前几笔hits，返回的hits格式和主查询query返回的hits格式一模一样</p>
+<ul>
+<li><p>参数</p>
+<ol>
+<li><p>from、size</p>
+</li>
+<li><p>sort：sort : 设置返回的hits的排序</p>
+<ul>
+<li><p>要注意，假设在主查询query裡已经对数据设置了排序sort，此sort并不会对aggs裡面的数据造成影响，也就是说主查询query查找出来的数据会先丢进aggs而非先经过sort，因此就算主查询设置了sort，也不会影响aggs数据裡的排序因此如果在top_hits桶裡的返回的hits数据想要排序，需要自己在top_hits桶裡设置sort</p>
+</li>
+<li><p>如果没有设置sort，默认使用主查询query所查出来的_score排序</p>
+</li>
+</ul>
+</li>
+<li><p>_source : 设置返回的字段</p>
+</li>
+</ol>
+<blockquote>
+<p>测试数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">"color"</span>: <span class="string">"red"</span>, <span class="attr">"price"</span>: <span class="number">100</span> &#125;</span><br><span class="line">&#123; <span class="attr">"color"</span>: [<span class="string">"red"</span>, <span class="string">"blue"</span>], <span class="attr">"price"</span>: <span class="number">1000</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>dsl语句</p>
+<p>使用terms桶分组，再使用top_hits桶找出每个group裡面的price最小的前5笔hits</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match_all"</span>: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"size"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">        <span class="attr">"my_name"</span>: &#123;</span><br><span class="line">            <span class="attr">"terms"</span>: &#123;</span><br><span class="line">                <span class="attr">"field"</span>: <span class="string">"color"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">                <span class="attr">"my_top_hits"</span>: &#123;</span><br><span class="line">                    <span class="attr">"top_hits"</span>: &#123;</span><br><span class="line">                        <span class="attr">"size"</span>: <span class="number">5</span>,</span><br><span class="line">                        <span class="attr">"sort"</span>: &#123;</span><br><span class="line">                            <span class="attr">"price"</span>: <span class="string">"asc"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">"aggregations": &#123;</span><br><span class="line">    "my_name": &#123;</span><br><span class="line">        "doc_count_error_upper_bound": 0,</span><br><span class="line">        "sum_other_doc_count": 0,</span><br><span class="line">        "buckets": [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"key"</span>: <span class="string">"red"</span>,</span><br><span class="line">                <span class="attr">"doc_count"</span>: <span class="number">2</span>,  <span class="comment">//terms桶计算出来的color为red的文档数</span></span><br><span class="line">                <span class="attr">"my_top_hits"</span>: &#123;</span><br><span class="line">                    <span class="attr">"hits"</span>: &#123;  <span class="comment">//top_hits桶找出color为red的这些文档中，price从小到大排序取前5笔</span></span><br><span class="line">                        <span class="attr">"total"</span>: <span class="number">2</span>,</span><br><span class="line">                        <span class="attr">"max_score"</span>: <span class="literal">null</span>,</span><br><span class="line">                        <span class="attr">"hits"</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">"_score"</span>: <span class="literal">null</span>,</span><br><span class="line">                                <span class="attr">"_source"</span>: &#123; <span class="attr">"color"</span>: <span class="string">"red"</span>, <span class="attr">"price"</span>: <span class="number">100</span> &#125;,</span><br><span class="line">                                <span class="attr">"sort"</span>: [ <span class="number">100</span> ]</span><br><span class="line">                            &#125;,</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">"_score"</span>: <span class="literal">null</span>,</span><br><span class="line">                                <span class="attr">"_source"</span>: &#123; <span class="attr">"color"</span>: [ <span class="string">"red"</span>, <span class="string">"blue"</span> ], <span class="attr">"price"</span>: <span class="number">1000</span> &#125;,</span><br><span class="line">                                <span class="attr">"sort"</span>: [ <span class="number">1000</span> ]</span><br><span class="line">                            &#125;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"key"</span>: <span class="string">"blue"</span>,</span><br><span class="line">                <span class="attr">"doc_count"</span>: <span class="number">1</span>,  <span class="comment">//terms桶计算出来的color为blue的文档数</span></span><br><span class="line">                <span class="attr">"my_top_hits"</span>: &#123;</span><br><span class="line">                    <span class="attr">"hits"</span>: &#123; <span class="comment">//top_hits桶找出的hits</span></span><br><span class="line">                        <span class="attr">"total"</span>: <span class="number">1</span>,</span><br><span class="line">                        <span class="attr">"max_score"</span>: <span class="literal">null</span>,</span><br><span class="line">                        <span class="attr">"hits"</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">"_source"</span>: &#123;</span><br><span class="line">                                    <span class="attr">"color"</span>: [ <span class="string">"red"</span>, <span class="string">"blue"</span> ], <span class="attr">"price"</span>: <span class="number">1000</span> &#125;,</span><br><span class="line">                                <span class="attr">"sort"</span>: [ <span class="number">1000</span> ]</span><br><span class="line">                            &#125;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>date_histogram桶，对指定时间段内数据进行分组</p>
+<ul>
+<li><p>参数</p>
+<ol>
+<li>time_zone:”+08:00”：设置市区（东八区），不指定会影响分组时间错误</li>
+<li>interval：聚合时间间隔<ul>
+<li>year（1y）年</li>
+<li>quarter（1q）季度</li>
+<li>month（1M）月份</li>
+<li>week（1w）星期</li>
+<li>day（1d）天</li>
+<li>hour（1h）小时</li>
+<li>minute（1m）分钟</li>
+<li>second（1s）秒</li>
+</ul>
+</li>
+<li>format：指定返回时间格式</li>
+</ol>
+<blockquote>
+<p>dsl语句</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match_all"</span>: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"size"</span>: <span class="number">0</span>,</span><br><span class="line"><span class="attr">"aggs"</span>: &#123;</span><br><span class="line">            <span class="comment">// 自己取的聚合名字</span></span><br><span class="line">            <span class="attr">"group_by_grabTime"</span>: &#123;</span><br><span class="line">                <span class="comment">// es提供的时间处理函数</span></span><br><span class="line">                <span class="attr">"date_histogram"</span>: &#123;</span><br><span class="line">                    <span class="comment">// 需要聚合分组的字段名称, 类型需要为date, 格式没有要求</span></span><br><span class="line">                    <span class="attr">"field"</span>: <span class="string">"@timestamp"</span>,</span><br><span class="line">                    <span class="comment">// 按什么时间段聚合, 这里是5分钟, 可用的interval在上面给出</span></span><br><span class="line">                    <span class="attr">"interval"</span>: <span class="string">"5m"</span>,</span><br><span class="line">                    <span class="comment">// 设置时区, 这样就相当于东八区的时间</span></span><br><span class="line">                    <span class="attr">"time_zone"</span>:<span class="string">"+08:00"</span>,</span><br><span class="line">                    <span class="comment">// 返回值格式化，HH大写，不然不能区分上午、下午</span></span><br><span class="line">                    <span class="attr">"format"</span>: <span class="string">"yyyy-MM-dd HH"</span>,   </span><br><span class="line">                    <span class="comment">// 为空的话则填充0</span></span><br><span class="line">                    <span class="attr">"min_doc_count"</span>: <span class="number">0</span>,</span><br><span class="line">                    <span class="comment">// 需要填充0的范围</span></span><br><span class="line">                    <span class="attr">"extended_bounds"</span>: &#123;</span><br><span class="line">                        <span class="attr">"min"</span>: <span class="number">1533556800000</span>,</span><br><span class="line">                        <span class="attr">"max"</span>: <span class="number">1533806520000</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="comment">// 聚合</span></span><br><span class="line">                <span class="attr">"aggs"</span>: &#123;</span><br><span class="line">                    <span class="comment">// 自己取的名称</span></span><br><span class="line">                    <span class="attr">"group_by_status"</span>: &#123;</span><br><span class="line">                        <span class="comment">// es提供</span></span><br><span class="line">                        <span class="attr">"terms"</span>: &#123;</span><br><span class="line">                            <span class="comment">// 聚合字段名</span></span><br><span class="line">                            <span class="attr">"field"</span>: <span class="string">"LowStatusOfPrice"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ul>
+</li>
 </ol>
 
     
@@ -387,7 +590,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Elasticsearch基本操作"><span class="toc-number">1.</span> <span class="toc-text">Elasticsearch基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、简介"><span class="toc-number">1.1.</span> <span class="toc-text">一、简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ES与关系型数据库对比"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">ES与关系型数据库对比</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Elasticsearch基本操作"><span class="toc-number">1.</span> <span class="toc-text">Elasticsearch基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、简介"><span class="toc-number">1.1.</span> <span class="toc-text">一、简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ES与关系型数据库对比"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">ES与关系型数据库对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、基本查询"><span class="toc-number">1.2.</span> <span class="toc-text">二、基本查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#match"><span class="toc-number">1.2.1.</span> <span class="toc-text">match</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#multi-match：同一条件匹配多个字段"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">multi_match：同一条件匹配多个字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#match-phrase（短语搜索）"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">match_phrase（短语搜索）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#term和terms"><span class="toc-number">1.2.2.</span> <span class="toc-text">term和terms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bool"><span class="toc-number">1.2.3.</span> <span class="toc-text">bool</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#boost用法（搜索优先级）"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">boost用法（搜索优先级）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询（性能较差）"><span class="toc-number">1.2.4.</span> <span class="toc-text">模糊查询（性能较差）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、聚合分组"><span class="toc-number">1.3.</span> <span class="toc-text">三、聚合分组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行顺序"><span class="toc-number">1.3.1.</span> <span class="toc-text">执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的桶"><span class="toc-number">1.3.2.</span> <span class="toc-text">常见的桶</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -541,7 +744,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,15 +752,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Luck</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>
