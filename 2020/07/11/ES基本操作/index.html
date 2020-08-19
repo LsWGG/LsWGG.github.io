@@ -18,7 +18,7 @@
 <meta property="og:description" content="Elasticsearch基本操作一、简介Elasticsearch（ES）：一款基于Apache Lucene(TM)的开源的全文检索和分析引擎。通过简单的RESTful API来隐藏其复杂性、同时也做了分布式相关的工作。 Lucene：使用Java实现的一套搜索引擎库。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-11T03:11:47.000Z">
-<meta property="article:modified_time" content="2020-08-11T07:15:47.663Z">
+<meta property="article:modified_time" content="2020-08-19T01:15:29.952Z">
 <meta property="article:author" content="木子家❀">
 <meta property="article:tag" content="ES">
 <meta name="twitter:card" content="summary">
@@ -35,7 +35,7 @@
   <style type="text/css">
     
     #container.show {
-      background: linear-gradient(300deg,#a4a1d6,#e9eeee);
+      background: linear-gradient(300deg,#c1bbe5,#e9eeee);
     }
   </style>
   
@@ -220,7 +220,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.8k字</span>
+      <span class="post-count">3.1k字</span>
     </span>
   </span>
 
@@ -229,7 +229,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">11分</span>
+      <span class="post-count">12分</span>
     </span>
   </span>
 </div>
@@ -280,21 +280,45 @@
 <li>副本（replicas）：创建索引时可以为索引指定0个或者多个副本。副本是分片级别的，即索引的分片由1个主分片（primary shard）和0个或者多个副本分片（replica shard）组成。primary shard可以接受读取和写入请求，replica shard只能接受读取请求。所以副本只能提高数据的可用性和并发读取能力。当primary shard所在服务器的节点挂掉以后，ES会通过leader选举机制将replica shard为primary shard。</li>
 </ol>
 <h2 id="二、基本查询"><a href="#二、基本查询" class="headerlink" title="二、基本查询"></a>二、基本查询</h2><ol>
-<li><p>分页</p>
+<li><p>分页（深度分页）from+size</p>
+<p>缺点：</p>
+<ul>
+<li>效率低。比如from=5000，size=100，es需要在各个分片上匹配排序并得到5000+100条有效数据，然后在结果集中取最后100条结果。</li>
+<li>最大可查询条数为1W条。ES目前默认支持的skin值max_result_window=10000，当from+size&gt;max_result_window时，ES就会返回错误。</li>
+<li>==解决办法：使用scroll（游标查询）==</li>
+</ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match_all"</span>: &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"from"</span>: <span class="number">0</span>,  </span><br><span class="line">  <span class="attr">"size"</span>: <span class="number">1</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>from：从第几个商品开始查，最开始是 0</p>
 <p>size：要查几个结果</p>
 </li>
+<li><p>游标查询（scroll）</p>
+<ul>
+<li><p>启动游标查询</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CET /host/_search?<span class="attribute">scroll</span>=1m</span><br></pre></td></tr></table></figure>
+
+<p>scroll=1m表示游标查询窗口保持1分钟，如果一次取的数据量大可以设置大一些的时间；返回字段包含一个scroll_id，接下来用这个字段获取后续值</p>
+</li>
+<li><p>循环获取</p>
+<p>循环获取余下值</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /_search/scroll</span><br><span class="line">&#123;</span><br><span class="line">	<span class="attr">"scroll"</span>: <span class="string">"1m"</span>，</span><br><span class="line">	<span class="string">"scroll_id"</span>: scroll_id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>python操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> elasticsearch <span class="keyword">import</span> Elasticsearch</span><br><span class="line"></span><br><span class="line">es = Elasticsearch([<span class="string">'localhost:9200'</span>])</span><br><span class="line"><span class="comment"># 1.启动游标</span></span><br><span class="line">queryData = es.search(<span class="string">"internal_isop_log"</span>, body=dsl_body, scroll=<span class="string">'1m'</span>, size=<span class="number">1000</span>)</span><br><span class="line"><span class="comment"># 获取scroll_id</span></span><br><span class="line">hits_list = queryData.get(<span class="string">"hits"</span>).get(<span class="string">"hits"</span>)</span><br><span class="line">scroll_id = queryData[<span class="string">'_scroll_id'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.循环获取</span></span><br><span class="line">total = queryData.get(<span class="string">"hits"</span>).get(<span class="string">"total"</span>).get(<span class="string">'value'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(int(total / <span class="number">1000</span>)):</span><br><span class="line">    ss = &#123;<span class="string">'scroll'</span>: <span class="string">'1m'</span>, <span class="string">'scroll_id'</span>: scroll_id&#125;</span><br><span class="line">    res = self.es.scroll(body=ss)</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
 <li><p>范围查询（range）</p>
+</li>
+</ol>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"range"</span>: &#123;</span><br><span class="line">      <span class="attr">"price"</span>: &#123;</span><br><span class="line">        <span class="attr">"gte"</span>: <span class="number">400</span>,</span><br><span class="line">        <span class="attr">"lte"</span>: <span class="number">700</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>gt：大于</p>
 <p>gte：大于等于</p>
 <p>lt：小于</p>
 <p>lte：小于等于</p>
-</li>
-</ol>
 <h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>查询的字段内容是进行分词处理的，只要分词的单词结果中，在数据中有满足任意的分词结果都会被查询出来</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match"</span>: &#123;</span><br><span class="line">      <span class="attr">"product_name"</span>: <span class="string">"PHILIPS toothbrush"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -803,15 +827,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
