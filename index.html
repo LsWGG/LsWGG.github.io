@@ -320,33 +320,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h2 id="python中的魔法方法"><a href="#python中的魔法方法" class="headerlink" title="python中的魔法方法"></a>python中的魔法方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">__init__(self)	<span class="comment"># 在创建一个对象是默认被调用，不需要手动调用</span></span><br><span class="line">__str__(self)	<span class="comment"># 用来显示信息，需要return一个数据</span></span><br><span class="line">__del__(self)	<span class="comment"># 当删除对象时，默认被调用</span></span><br><span class="line">__new__(self)	<span class="comment"># 才是实例化对象调用的第一个方法，它只取下 cls 参数，并把 其他参数传给 __init__</span></span><br><span class="line">__call__(self)	<span class="comment"># 允许一个类的实例像函数一样被调用 。</span></span><br><span class="line">__getitem__(self)		<span class="comment"># 定义获取容器中指定元素的行为，相当于 self[key] 。</span></span><br><span class="line">__getattr__(self) 	<span class="comment"># 定义当用户试图访问一个不存在属性的时候的行为 。</span></span><br><span class="line">__setattr__(self) 	<span class="comment"># 定义当一个属性被设置的时候的行为 。</span></span><br><span class="line">__getattribute__(self) 	<span class="comment"># 定义当一个属性被访问的时候的行为 。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="可变与不可变类型"><a href="#可变与不可变类型" class="headerlink" title="可变与不可变类型"></a>可变与不可变类型</h2><ul>
-<li><strong>指内存中的那块内容（value）是否可以发生改变</strong></li>
-<li>可变类型：不需要申请新内存，在原有基础上改变</li>
-<li>不可变类型：必须在内存中新申请一块区域</li>
-</ul>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(alist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(alist)<span class="number">-1</span>, <span class="number">0</span>, <span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j):</span><br><span class="line">            <span class="keyword">if</span> alist[i] &gt; alist[i+<span class="number">1</span>]:</span><br><span class="line">                alist[i], alist[i+<span class="number">1</span>] = alist[i+<span class="number">1</span>], alist[i]</span><br></pre></td></tr></table></figure>
-
-<h2 id="is和-的区别"><a href="#is和-的区别" class="headerlink" title="is和==的区别"></a>is和==的区别</h2><ul>
-<li>都是对对象进行比较判断作用的</li>
-<li>==（比较运算法），用来判断两个对象的value值</li>
-<li>is（同一性运算符），用来判断两个对象的唯一身份标识，id地址</li>
-</ul>
-<p>只有<strong>数值型（-5~256）和字符串</strong>型的情况下，a is b才为True，当a和b是<strong>tuple，list，dict</strong>或<strong>set</strong>型时，a is b为False。 </p>
-<h2 id="python默认递归限制1000or998"><a href="#python默认递归限制1000or998" class="headerlink" title="python默认递归限制1000or998"></a>python默认递归限制1000or998</h2><ul>
-<li><p>修改限制</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.setrecursionlimit(<span class="number">1500</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="数据量大情况下Paginator的缺点"><a href="#数据量大情况下Paginator的缺点" class="headerlink" title="数据量大情况下Paginator的缺点"></a>数据量大情况下Paginator的缺点</h1><ul>
-<li>查询效率慢的问题</li>
-<li><strong>PageHelper的分页功能是通过Limit拼接SQL实现的</strong> </li>
-</ul>
-<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>作用：在不改变已有函数源代码及调用方式的前提下，对已有函数进行功能的扩展</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不改变原有函数__name__\备注信息</span></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(fu)</span>:</span>  <span class="comment"># fu:目标函数</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @wraps(fu)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="string">'''执行函数之前'''</span></span><br><span class="line">        fu()</span><br><span class="line">        <span class="string">'''执行函数之后'''</span></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 语法糖写法</span></span><br><span class="line"><span class="meta">@check</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comment</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'发表评论'</span>)</span><br><span class="line">    </span><br><span class="line">comment()</span><br><span class="line"><span class="comment"># check等价与  comment = check(comment)</span></span><br></pre></td></tr></table></figure>
-
+    
     
 
     
@@ -1258,6 +1232,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tool</a>
               </li>
              
@@ -1270,7 +1248,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+                <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,19 +1256,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Luck</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
             
             <div class="clearfix"></div>

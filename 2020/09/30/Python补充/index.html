@@ -18,7 +18,7 @@
 <meta property="og:description" content="python中的魔法方法123456789__init__(self)	# 在创建一个对象是默认被调用，不需要手动调用__str__(self)	# 用来显示信息，需要return一个数据__del__(self)	# 当删除对象时，默认被调用__new__(self)	# 才是实例化对象调用的第一个方法，它只取下 cls 参数，并把 其他参数传给 __init____call__(self)	#">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-30T08:14:15.000Z">
-<meta property="article:modified_time" content="2020-09-30T08:18:44.761Z">
+<meta property="article:modified_time" content="2020-09-30T08:21:43.021Z">
 <meta property="article:author" content="木子家❀">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -242,6 +242,8 @@
     
     <h2 id="python中的魔法方法"><a href="#python中的魔法方法" class="headerlink" title="python中的魔法方法"></a>python中的魔法方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">__init__(self)	<span class="comment"># 在创建一个对象是默认被调用，不需要手动调用</span></span><br><span class="line">__str__(self)	<span class="comment"># 用来显示信息，需要return一个数据</span></span><br><span class="line">__del__(self)	<span class="comment"># 当删除对象时，默认被调用</span></span><br><span class="line">__new__(self)	<span class="comment"># 才是实例化对象调用的第一个方法，它只取下 cls 参数，并把 其他参数传给 __init__</span></span><br><span class="line">__call__(self)	<span class="comment"># 允许一个类的实例像函数一样被调用 。</span></span><br><span class="line">__getitem__(self)		<span class="comment"># 定义获取容器中指定元素的行为，相当于 self[key] 。</span></span><br><span class="line">__getattr__(self) 	<span class="comment"># 定义当用户试图访问一个不存在属性的时候的行为 。</span></span><br><span class="line">__setattr__(self) 	<span class="comment"># 定义当一个属性被设置的时候的行为 。</span></span><br><span class="line">__getattribute__(self) 	<span class="comment"># 定义当一个属性被访问的时候的行为 。</span></span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <h2 id="可变与不可变类型"><a href="#可变与不可变类型" class="headerlink" title="可变与不可变类型"></a>可变与不可变类型</h2><ul>
 <li><strong>指内存中的那块内容（value）是否可以发生改变</strong></li>
 <li>可变类型：不需要申请新内存，在原有基础上改变</li>
@@ -261,7 +263,7 @@
 
 </li>
 </ul>
-<h1 id="数据量大情况下Paginator的缺点"><a href="#数据量大情况下Paginator的缺点" class="headerlink" title="数据量大情况下Paginator的缺点"></a>数据量大情况下Paginator的缺点</h1><ul>
+<h2 id="数据量大情况下Paginator的缺点"><a href="#数据量大情况下Paginator的缺点" class="headerlink" title="数据量大情况下Paginator的缺点"></a>数据量大情况下Paginator的缺点</h2><ul>
 <li>查询效率慢的问题</li>
 <li><strong>PageHelper的分页功能是通过Limit拼接SQL实现的</strong> </li>
 </ul>
@@ -403,7 +405,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的魔法方法"><span class="toc-number">1.</span> <span class="toc-text">python中的魔法方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可变与不可变类型"><span class="toc-number">2.</span> <span class="toc-text">可变与不可变类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">3.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is和-的区别"><span class="toc-number">4.</span> <span class="toc-text">is和&#x3D;&#x3D;的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python默认递归限制1000or998"><span class="toc-number">5.</span> <span class="toc-text">python默认递归限制1000or998</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据量大情况下Paginator的缺点"><span class="toc-number"></span> <span class="toc-text">数据量大情况下Paginator的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#装饰器"><span class="toc-number">1.</span> <span class="toc-text">装饰器</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的魔法方法"><span class="toc-number">1.</span> <span class="toc-text">python中的魔法方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可变与不可变类型"><span class="toc-number">2.</span> <span class="toc-text">可变与不可变类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">3.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is和-的区别"><span class="toc-number">4.</span> <span class="toc-text">is和&#x3D;&#x3D;的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python默认递归限制1000or998"><span class="toc-number">5.</span> <span class="toc-text">python默认递归限制1000or998</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据量大情况下Paginator的缺点"><span class="toc-number">6.</span> <span class="toc-text">数据量大情况下Paginator的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#装饰器"><span class="toc-number">7.</span> <span class="toc-text">装饰器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -575,6 +577,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tool</a>
               </li>
              
@@ -587,7 +593,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+                <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,19 +601,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Luck</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
             
             <div class="clearfix"></div>
