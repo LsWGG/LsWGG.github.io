@@ -6,25 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://LsWGG.github.io">
-  <title>Tag: NoSQL | (*╹▽╹*)欢迎光临</title>
+  <title>Redis操作 | (*╹▽╹*)欢迎光临</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="(*╹▽╹*)欢迎光临">
-<meta property="og:url" content="http://lswgg.github.io/tags/NoSQL/index.html">
+  <meta name="description" content="一、Redis概括1  Redis特点 速度快：C语言实现，存储在内存中以键值对形式保存  持久化:  redis可以将数据写入到磁盘中，在停机后，再次启动redis时，将磁盘中的备份数据加载到redis中  两种机制：  RDB快照持久化（默认开启）  将内存中的数据存入磁盘 缺点：一旦数据库出现问题，rdb文件数据不是全新的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis操作">
+<meta property="og:url" content="http://lswgg.github.io/2020/09/30/Redis%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="(*╹▽╹*)欢迎光临">
+<meta property="og:description" content="一、Redis概括1  Redis特点 速度快：C语言实现，存储在内存中以键值对形式保存  持久化:  redis可以将数据写入到磁盘中，在停机后，再次启动redis时，将磁盘中的备份数据加载到redis中  两种机制：  RDB快照持久化（默认开启）  将内存中的数据存入磁盘 缺点：一旦数据库出现问题，rdb文件数据不是全新的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306043938625.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0lUX3Rvd25sZXQ=,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-09-30T03:23:28.000Z">
+<meta property="article:modified_time" content="2020-09-30T07:45:33.652Z">
 <meta property="article:author" content="木子家❀">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content=" Linux">
-<meta property="article:tag" content=" Django">
-<meta property="article:tag" content=" Web">
-<meta property="article:tag" content=" 测试">
-<meta property="article:tag" content=" NoSQL">
-<meta property="article:tag" content=" ES">
-<meta property="article:tag" content=" Luck">
+<meta property="article:tag" content="NoSQL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190306043938625.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0lUX3Rvd25sZXQ=,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="(*╹▽╹*)欢迎光临" type="application/atom+xml">
   
@@ -190,41 +189,940 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Redis操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      Redis操作
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2020/09/30/Redis%E6%93%8D%E4%BD%9C/" class="archive-article-date">
         <time datetime="2020-09-30T03:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-30</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/09/30/Redis%E6%93%8D%E4%BD%9C/" target="_blank">Redis操作</a>
   
-    </h1>
-  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">20分</span>
+    </span>
+  </span>
+</div>
 
 
-        <div class="article-info info-on-right">
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="一、Redis概括"><a href="#一、Redis概括" class="headerlink" title="一、Redis概括"></a>一、Redis概括</h1><h3 id="1-Redis特点"><a href="#1-Redis特点" class="headerlink" title="1  Redis特点"></a>1  <a href="https://handout-1300728887.cos.ap-beijing.myqcloud.com/%E8%AE%B2%E4%B9%89/%E9%BB%91%E9%A9%AC%E5%A4%B4%E6%9D%A1%E9%A1%B9%E7%9B%AE%E8%AF%BE%E4%BB%B6/C02-Database/Redis.html" target="_blank" rel="noopener">Redis特点</a></h3><ol>
+<li><p>速度快：C语言实现，存储在内存中以键值对形式保存</p>
+</li>
+<li><p><strong>持久化:</strong></p>
+<ul>
+<li><p>redis可以将数据写入到磁盘中，在停机后，再次启动redis时，将磁盘中的备份数据加载到redis中</p>
+</li>
+<li><p>两种机制：</p>
+<ol>
+<li><p>RDB快照持久化（默认开启）</p>
+<ul>
+<li>将内存中的数据存入磁盘</li>
+<li>缺点：一旦数据库出现问题，rdb文件数据不是全新的</li>
+</ul>
+<a id="more"></a></li>
+<li><p>AOF追加文件持久化</p>
+<ul>
+<li>文件会变大，自动压缩</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>多种数据结构：string  hash  list  set  zset</p>
+</li>
+<li><p>支持多种编程语言</p>
+</li>
+<li><p>支持事务、流水线、消息队列</p>
+</li>
+<li><p><a href="https://handout-1300728887.cos.ap-beijing.myqcloud.com/%E8%AE%B2%E4%B9%89/redis%E8%AE%B2%E4%B9%89/redis%E8%AE%B2%E4%B9%89/redis/da-jian-zhu-cong.html" target="_blank" rel="noopener">主从复制</a></p>
+</li>
+<li><p>高可用、分布式</p>
+</li>
+</ol>
+<h3 id="2-redis宕机"><a href="#2-redis宕机" class="headerlink" title="2  redis宕机"></a>2  redis宕机</h3><ul>
+<li><p>slave从宕机</p>
+<ul>
+<li>重启后会自动加入到主从架构中，完成数据同步</li>
+</ul>
+</li>
+<li><p>master主宕机（主从都没持久化）</p>
+<ol>
+<li>不要立马重启服务</li>
+<li>slave执行<code>SLAVEOF ON ONE</code>断开主从关系并升级为主库</li>
+<li>重启主，<code>SLAVEOF</code>设为从</li>
+</ol>
+<p>可使用简单方法：<strong>哨兵</strong></p>
+</li>
+</ul>
+<h3 id="3-redis高可用"><a href="#3-redis高可用" class="headerlink" title="3  redis高可用"></a>3  redis高可用</h3><p><strong>提供了主从同步＋哨兵机制（ Sentinel ）</strong></p>
+<ul>
+<li>哨兵机制：实现故障转移，当检测到主服务器发生故障时，把从服务器升级为主，保证数据正常使用<ul>
+<li>原理：心跳机制＋投票裁决＋故障转移<ul>
+<li>定时给master/slave发送消息，若指定时间内无响应（主观宕机 SDOWN）</li>
+<li>Sentinel群都报告某一master无响应（客观宕机 SDOWN）</li>
+<li>通过一定vote算法，将从升为主</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-为什么Redis比MySQL快"><a href="#4-为什么Redis比MySQL快" class="headerlink" title="4  为什么Redis比MySQL快"></a>4  为什么Redis比MySQL快</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Redis</th>
+<th align="center">MySQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">数据格式</td>
+<td align="center">k-v</td>
+<td align="center">B+TREE</td>
+</tr>
+<tr>
+<td align="center">时间复杂度</td>
+<td align="center">0(1)（常数阶）</td>
+<td align="center">0(logn)（对数阶）</td>
+</tr>
+<tr>
+<td align="center">存储位置</td>
+<td align="center">从内存直接取出</td>
+<td align="center">磁盘表（全局扫或索引查）</td>
+</tr>
+</tbody></table>
+<p>Redis是单线程的多路复用IO，单线程避免线程切换开销；多路复用避免IO等待开销；多核处理器下对数据进行分区，各处理器处理不同的数据（分着干）</p>
+<h1 id="二、Redis缓存"><a href="#二、Redis缓存" class="headerlink" title="二、Redis缓存"></a>二、Redis缓存</h1><h3 id="1-有效期TTL（Time-to-live）"><a href="#1-有效期TTL（Time-to-live）" class="headerlink" title="1  有效期TTL（Time to live）"></a>1  有效期TTL（Time to live）</h3><ul>
+<li>作用：<ul>
+<li>节省空间</li>
+<li>做到数据有效性，失效后，做到数据一致性</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-过期策略"><a href="#1-1-过期策略" class="headerlink" title="1.1  过期策略"></a>1.1  过期策略</h4><ul>
+<li><p>定时过期：时间一到立即清除，对内存友好，但会占用大量CPU资源</p>
+</li>
+<li><p>惰性过期：当访问时才去判断是否过期，节省CPU，占用内存</p>
+</li>
+<li><p>定期过期：每隔一段时间，随机清除</p>
+<p><strong>Redis中同时使用了惰性过期和定期过期两种过期策略。</strong> </p>
+</li>
+</ul>
+<h4 id="1-2-缓存淘汰-（eviction）"><a href="#1-2-缓存淘汰-（eviction）" class="headerlink" title="1.2  缓存淘汰 （eviction）"></a>1.2  缓存淘汰 （eviction）</h4><ul>
+<li>LRU（Least recently used，最近最少使用）<ul>
+<li>新数据插入到表头部</li>
+<li>缓存命中时，将其移到头部</li>
+<li>缓存满的时候将尾部的数据丢掉</li>
+</ul>
+</li>
+<li>LFU（Least Frequently Used 最近最少使用算法）<ul>
+<li>如果数据在一段时间内使用次数很少，那么将来也会很少</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-缓存模式"><a href="#2-缓存模式" class="headerlink" title="2  缓存模式"></a>2  缓存模式</h3><ul>
+<li><strong>先更新数据库，再删除缓存</strong> </li>
+</ul>
+<h4 id="2-1-缓存穿透"><a href="#2-1-缓存穿透" class="headerlink" title="2.1  缓存穿透"></a>2.1  缓存穿透</h4><ul>
+<li><p>频繁请求缓存中不存在的数据，增大数据库压力</p>
+<ul>
+<li>解决方案：<ol>
+<li>返回缓存伪造数据</li>
+<li>限制请求参数</li>
+<li>借助第三方过滤器：布隆过滤器…</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>布隆过滤器</p>
+<p>本质上是一种*<em>概率型数据结构， 由一个很长的bit数组和一系列哈希函数组成的 *</em></p>
+<p>特点：<strong>高效地插入和查询</strong></p>
+<p>算法的核心： <strong>某样东西一定不存在或者可能存在</strong></p>
+<p>缺点：<strong>数据只能插入不能删除</strong></p>
+<ul>
+<li>存储原理：经过多次不同维度的hash计算，将数据映射到二进制向量里</li>
+<li>服务流程：<ol>
+<li>当用户访问时，去布隆过滤器中判断key值是否存在，否则直接返回</li>
+<li>如果key值存在，则访问redis，由于存在误判率，redis中也可能不存在</li>
+<li>再访问数据库，若也不存在，直接返回空</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190306043938625.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0lUX3Rvd25sZXQ=,size_16,color_FFFFFF,t_70" alt=""></p>
+<h4 id="2-2-缓存雪崩"><a href="#2-2-缓存雪崩" class="headerlink" title="2.2  缓存雪崩"></a>2.2  缓存雪崩</h4><ul>
+<li>同一时间内，大量缓存失效，造成数据库压力剧增<ul>
+<li>解决方案：<ol>
+<li>设置不同的有效期值</li>
+<li>采用多级缓存</li>
+<li>利用加锁或者队列</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="三、Redis操作"><a href="#三、Redis操作" class="headerlink" title="三、Redis操作"></a>三、Redis操作</h1><h2 id="1-键操作"><a href="#1-键操作" class="headerlink" title="1. 键操作"></a>1. 键操作</h2><p>键的判断和操作方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>exists(name)</td>
+<td>判断一个键是否存在</td>
+<td>name：键名</td>
+<td>redis.exists(‘name’)</td>
+<td>是否存在name这个键</td>
+<td>True</td>
+</tr>
+<tr>
+<td>delete(name)</td>
+<td>删除一个键</td>
+<td>name：键名</td>
+<td>redis.delete(‘name’)</td>
+<td>删除name这个键</td>
+<td>1</td>
+</tr>
+<tr>
+<td>type(name)</td>
+<td>判断键类型</td>
+<td>name：键名</td>
+<td>redis.type(‘name’)</td>
+<td>判断name这个键类型</td>
+<td>b’string’</td>
+</tr>
+<tr>
+<td>keys(pattern)</td>
+<td>获取所有符合规则的键</td>
+<td>pattern：匹配规则</td>
+<td>redis.keys(‘n*’)</td>
+<td>获取所有以n开头的键</td>
+<td>[b’name’]</td>
+</tr>
+<tr>
+<td>randomkey()</td>
+<td>获取随机的一个键</td>
+<td></td>
+<td>randomkey()</td>
+<td>获取随机的一个键</td>
+<td>b’name’</td>
+</tr>
+<tr>
+<td>rename(src, dst)</td>
+<td>重命名键</td>
+<td>src：原键名；dst：新键名</td>
+<td>redis.rename(‘name’, ‘nickname’)</td>
+<td>将name重命名为nickname</td>
+<td>True</td>
+</tr>
+<tr>
+<td>dbsize()</td>
+<td>获取当前数据库中键的数目</td>
+<td></td>
+<td>dbsize()</td>
+<td>获取当前数据库中键的数目</td>
+<td>100</td>
+</tr>
+<tr>
+<td>expire(name, time)</td>
+<td>设定键的过期时间，单位为秒</td>
+<td>name：键名；time：秒数</td>
+<td>redis.expire(‘name’, 2)</td>
+<td>将name键的过期时间设置为2秒</td>
+<td>True</td>
+</tr>
+<tr>
+<td>ttl(name)</td>
+<td>获取键的过期时间，单位为秒，-1表示永久不过期</td>
+<td>name：键名</td>
+<td>redis.ttl(‘name’)</td>
+<td>获取name这个键的过期时间</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>move(name, db)</td>
+<td>将键移动到其他数据库</td>
+<td>name：键名；db：数据库代号</td>
+<td>move(‘name’, 2)</td>
+<td>将name移动到2号数据库</td>
+<td>True</td>
+</tr>
+<tr>
+<td>flushdb()</td>
+<td>删除当前选择数据库中的所有键</td>
+<td></td>
+<td>flushdb()</td>
+<td>删除当前选择数据库中的所有键</td>
+<td>True</td>
+</tr>
+<tr>
+<td>flushall()</td>
+<td>删除所有数据库中的所有键</td>
+<td></td>
+<td>flushall()</td>
+<td>删除所有数据库中的所有键</td>
+<td>True</td>
+</tr>
+</tbody></table>
+<h2 id="2-字符串操作"><a href="#2-字符串操作" class="headerlink" title="2. 字符串操作"></a>2. 字符串操作</h2><p>Redis支持最基本的键值对形式存储，用法总结如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>set(name, value)</td>
+<td>给数据库中键为name的string赋予值value</td>
+<td>name: 键名；value: 值</td>
+<td>redis.set(‘name’, ‘Bob’)</td>
+<td>给name这个键的value赋值为Bob</td>
+<td>True</td>
+</tr>
+<tr>
+<td>get(name)</td>
+<td>返回数据库中键为name的string的value</td>
+<td>name：键名</td>
+<td>redis.get(‘name’)</td>
+<td>返回name这个键的value</td>
+<td>b’Bob’</td>
+</tr>
+<tr>
+<td>getset(name, value)</td>
+<td>给数据库中键为name的string赋予值value并返回上次的value</td>
+<td>name：键名；value：新值</td>
+<td>redis.getset(‘name’, ‘Mike’)</td>
+<td>赋值name为Mike并得到上次的value</td>
+<td>b’Bob’</td>
+</tr>
+<tr>
+<td>mget(keys, *args)</td>
+<td>返回多个键对应的value</td>
+<td>keys：键的列表</td>
+<td>redis.mget([‘name’, ‘nickname’])</td>
+<td>返回name和nickname的value</td>
+<td>[b’Mike’, b’Miker’]</td>
+</tr>
+<tr>
+<td>setnx(name, value)</td>
+<td>如果不存在这个键值对，则更新value，否则不变</td>
+<td>name：键名</td>
+<td>redis.setnx(‘newname’, ‘James’)</td>
+<td>如果newname这个键不存在，则设置值为James</td>
+<td>第一次运行结果是True，第二次运行结果是False</td>
+</tr>
+<tr>
+<td>setex(name, time, value)</td>
+<td>设置可以对应的值为string类型的value，并指定此键值对应的有效期</td>
+<td>name: 键名；time: 有效期； value：值</td>
+<td>redis.setex(‘name’, 1, ‘James’)</td>
+<td>将name这个键的值设为James，有效期为1秒</td>
+<td>True</td>
+</tr>
+<tr>
+<td>setrange(name, offset, value)</td>
+<td>设置指定键的value值的子字符串</td>
+<td>name：键名；offset：偏移量；value：值</td>
+<td>redis.set(‘name’, ‘Hello’) redis.setrange(‘name’, 6, ‘World’)</td>
+<td>设置name为Hello字符串，并在index为6的位置补World</td>
+<td>11，修改后的字符串长度</td>
+</tr>
+<tr>
+<td>mset(mapping)</td>
+<td>批量赋值</td>
+<td>mapping：字典</td>
+<td>redis.mset({‘name1’: ‘Durant’, ‘name2’: ‘James’})</td>
+<td>将name1设为Durant，name2设为James</td>
+<td>True</td>
+</tr>
+<tr>
+<td>msetnx(mapping)</td>
+<td>键均不存在时才批量赋值</td>
+<td>mapping：字典</td>
+<td>redis.msetnx({‘name3’: ‘Smith’, ‘name4’: ‘Curry’})</td>
+<td>在name3和name4均不存在的情况下才设置二者值</td>
+<td>True</td>
+</tr>
+<tr>
+<td>incr(name, amount=1)</td>
+<td>键为name的value增值操作，默认为1，键不存在则被创建并设为amount</td>
+<td>name：键名；amount：增长的值</td>
+<td>redis.incr(‘age’, 1)</td>
+<td>age对应的值增1，若不存在，则会创建并设置为1</td>
+<td>1，即修改后的值</td>
+</tr>
+<tr>
+<td>decr(name, amount=1)</td>
+<td>键为name的value减值操作，默认为1，键不存在则被创建并将value设置为-amount</td>
+<td>name：键名； amount：减少的值</td>
+<td>redis.decr(‘age’, 1)</td>
+<td>age对应的值减1，若不存在，则会创建并设置为-1</td>
+<td>-1，即修改后的值</td>
+</tr>
+<tr>
+<td>append(key, value)</td>
+<td>键为name的string的值附加value</td>
+<td>key：键名</td>
+<td>redis.append(‘nickname’, ‘OK’)</td>
+<td>向键为nickname的值后追加OK</td>
+<td>13，即修改后的字符串长度</td>
+</tr>
+<tr>
+<td>substr(name, start, end=-1)</td>
+<td>返回键为name的string的子串</td>
+<td>name：键名；start：起始索引；end：终止索引，默认为-1，表示截取到末尾</td>
+<td>redis.substr(‘name’, 1, 4)</td>
+<td>返回键为name的值的字符串，截取索引为1~4的字符</td>
+<td>b’ello’</td>
+</tr>
+<tr>
+<td>getrange(key, start, end)</td>
+<td>获取键的value值从start到end的子字符串</td>
+<td>key：键名；start：起始索引；end：终止索引</td>
+<td>redis.getrange(‘name’, 1, 4)</td>
+<td>返回键为name的值的字符串，截取索引为1~4的字符</td>
+<td>b’ello’</td>
+</tr>
+</tbody></table>
+<h2 id="3-列表操作"><a href="#3-列表操作" class="headerlink" title="3. 列表操作"></a>3. 列表操作</h2><p>Redis还提供了列表存储，列表内的元素可以重复，而且可以从两端存储，用法如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rpush(name, *values)</td>
+<td>在键为name的列表末尾添加值为value的元素，可以传多个</td>
+<td>name：键名；values：值</td>
+<td>redis.rpush(‘list’, 1, 2, 3)</td>
+<td>向键为list的列表尾添加1、2、3</td>
+<td>3，列表大小</td>
+</tr>
+<tr>
+<td>lpush(name, *values)</td>
+<td>在键为name的列表头添加值为value的元素，可以传多个</td>
+<td>name：键名；values：值</td>
+<td>redis.lpush(‘list’, 0)</td>
+<td>向键为list的列表头部添加0</td>
+<td>4，列表大小</td>
+</tr>
+<tr>
+<td>llen(name)</td>
+<td>返回键为name的列表的长度</td>
+<td>name：键名</td>
+<td>redis.llen(‘list’)</td>
+<td>返回键为list的列表的长度</td>
+<td>4</td>
+</tr>
+<tr>
+<td>lrange(name, start, end)</td>
+<td>返回键为name的列表中start至end之间的元素</td>
+<td>name：键名；start：起始索引；end：终止索引</td>
+<td>redis.lrange(‘list’, 1, 3)</td>
+<td>返回起始索引为1终止索引为3的索引范围对应的列表</td>
+<td>[b’3’, b’2’, b’1’]</td>
+</tr>
+<tr>
+<td>ltrim(name, start, end)</td>
+<td>截取键为name的列表，保留索引为start到end的内容</td>
+<td>name：键名；start：起始索引；end：终止索引</td>
+<td>ltrim(‘list’, 1, 3)</td>
+<td>保留键为list的索引为1到3的元素</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lindex(name, index)</td>
+<td>返回键为name的列表中index位置的元素</td>
+<td>name：键名；index：索引</td>
+<td>redis.lindex(‘list’, 1)</td>
+<td>返回键为list的列表索引为1的元素</td>
+<td>b’2’</td>
+</tr>
+<tr>
+<td>lset(name, index, value)</td>
+<td>给键为name的列表中index位置的元素赋值，越界则报错</td>
+<td>name：键名；index：索引位置；value：值</td>
+<td>redis.lset(‘list’, 1, 5)</td>
+<td>将键为list的列表中索引为1的位置赋值为5</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lrem(name, count, value)</td>
+<td>删除count个键的列表中值为value的元素</td>
+<td>name：键名；count：删除个数；value：值</td>
+<td>redis.lrem(‘list’, 2, 3)</td>
+<td>将键为list的列表删除两个3</td>
+<td>1，即删除的个数</td>
+</tr>
+<tr>
+<td>lpop(name)</td>
+<td>返回并删除键为name的列表中的首元素</td>
+<td>name：键名</td>
+<td>redis.lpop(‘list’)</td>
+<td>返回并删除名为list的列表中的第一个元素</td>
+<td>b’5’</td>
+</tr>
+<tr>
+<td>rpop(name)</td>
+<td>返回并删除键为name的列表中的尾元素</td>
+<td>name：键名</td>
+<td>redis.rpop(‘list’)</td>
+<td>返回并删除名为list的列表中的最后一个元素</td>
+<td>b’2’</td>
+</tr>
+<tr>
+<td>blpop(keys, timeout=0)</td>
+<td>返回并删除名称在keys中的list中的首个元素，如果列表为空，则会一直阻塞等待</td>
+<td>keys：键列表；timeout： 超时等待时间，0为一直等待</td>
+<td>redis.blpop(‘list’)</td>
+<td>返回并删除键为list的列表中的第一个元素</td>
+<td>[b’5’]</td>
+</tr>
+<tr>
+<td>brpop(keys, timeout=0)</td>
+<td>返回并删除键为name的列表中的尾元素，如果list为空，则会一直阻塞等待</td>
+<td>keys：键列表；timeout：超时等待时间，0为一直等待</td>
+<td>redis.brpop(‘list’)</td>
+<td>返回并删除名为list的列表中的最后一个元素</td>
+<td>[b’2’]</td>
+</tr>
+<tr>
+<td>rpoplpush(src, dst)</td>
+<td>返回并删除名称为src的列表的尾元素，并将该元素添加到名称为dst的列表头部</td>
+<td>src：源列表的键；dst：目标列表的key</td>
+<td>redis.rpoplpush(‘list’, ‘list2’)</td>
+<td>将键为list的列表尾元素删除并将其添加到键为list2的列表头部，然后返回</td>
+<td>b’2’</td>
+</tr>
+</tbody></table>
+<h2 id="4-集合操作"><a href="#4-集合操作" class="headerlink" title="4. 集合操作"></a>4. 集合操作</h2><p>Redis还提供了集合存储，集合中的元素都是不重复的，用法如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sadd(name, *values)</td>
+<td>向键为name的集合中添加元素</td>
+<td>name：键名；values：值，可为多个</td>
+<td>redis.sadd(‘tags’, ‘Book’, ‘Tea’, ‘Coffee’)</td>
+<td>向键为tags的集合中添加Book、Tea和Coffee这3个内容</td>
+<td>3，即插入的数据个数</td>
+</tr>
+<tr>
+<td>srem(name, *values)</td>
+<td>从键为name的集合中删除元素</td>
+<td>name：键名；values：值，可为多个</td>
+<td>redis.srem(‘tags’, ‘Book’)</td>
+<td>从键为tags的集合中删除Book</td>
+<td>1，即删除的数据个数</td>
+</tr>
+<tr>
+<td>spop(name)</td>
+<td>随机返回并删除键为name的集合中的一个元素</td>
+<td>name：键名</td>
+<td>redis.spop(‘tags’)</td>
+<td>从键为tags的集合中随机删除并返回该元素</td>
+<td>b’Tea’</td>
+</tr>
+<tr>
+<td>smove(src, dst, value)</td>
+<td>从src对应的集合中移除元素并将其添加到dst对应的集合中</td>
+<td>src：源集合；dst：目标集合；value：元素值</td>
+<td>redis.smove(‘tags’, ‘tags2’, ‘Coffee’)</td>
+<td>从键为tags的集合中删除元素Coffee并将其添加到键为tags2的集合</td>
+<td>True</td>
+</tr>
+<tr>
+<td>scard(name)</td>
+<td>返回键为name的集合的元素个数</td>
+<td>name：键名</td>
+<td>redis.scard(‘tags’)</td>
+<td>获取键为tags的集合中的元素个数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>sismember(name, value)</td>
+<td>测试member是否是键为name的集合的元素</td>
+<td>name：键值</td>
+<td>redis.sismember(‘tags’, ‘Book’)</td>
+<td>判断Book是否是键为tags的集合元素</td>
+<td>True</td>
+</tr>
+<tr>
+<td>sinter(keys, *args)</td>
+<td>返回所有给定键的集合的交集</td>
+<td>keys：键列表</td>
+<td>redis.sinter([‘tags’, ‘tags2’])</td>
+<td>返回键为tags的集合和键为tags2的集合的交集</td>
+<td>{b’Coffee’}</td>
+</tr>
+<tr>
+<td>sinterstore(dest, keys, *args)</td>
+<td>求交集并将交集保存到dest的集合</td>
+<td>dest：结果集合；keys：键列表</td>
+<td>redis.sinterstore(‘inttag’, [‘tags’, ‘tags2’])</td>
+<td>求键为tags的集合和键为tags2的集合的交集并将其保存为inttag</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sunion(keys, *args)</td>
+<td>返回所有给定键的集合的并集</td>
+<td>keys：键列表</td>
+<td>redis.sunion([‘tags’, ‘tags2’])</td>
+<td>返回键为tags的集合和键为tags2的集合的并集</td>
+<td>{b’Coffee’, b’Book’, b’Pen’}</td>
+</tr>
+<tr>
+<td>sunionstore(dest, keys, *args)</td>
+<td>求并集并将并集保存到dest的集合</td>
+<td>dest：结果集合；keys：键列表</td>
+<td>redis.sunionstore(‘inttag’, [‘tags’, ‘tags2’])</td>
+<td>求键为tags的集合和键为tags2的集合的并集并将其保存为inttag</td>
+<td>3</td>
+</tr>
+<tr>
+<td>sdiff(keys, *args)</td>
+<td>返回所有给定键的集合的差集</td>
+<td>keys：键列表</td>
+<td>redis.sdiff([‘tags’, ‘tags2’])</td>
+<td>返回键为tags的集合和键为tags2的集合的差集</td>
+<td>{b’Book’, b’Pen’}</td>
+</tr>
+<tr>
+<td>sdiffstore(dest, keys, *args)</td>
+<td>求差集并将差集保存到dest集合</td>
+<td>dest：结果集合；keys：键列表</td>
+<td>redis.sdiffstore(‘inttag’, [‘tags’, ‘tags2’])</td>
+<td>求键为tags的集合和键为tags2的集合的差集并将其保存为inttag`</td>
+<td>3</td>
+</tr>
+<tr>
+<td>smembers(name)</td>
+<td>返回键为name的集合的所有元素</td>
+<td>name：键名</td>
+<td>redis.smembers(‘tags’)</td>
+<td>返回键为tags的集合的所有元素</td>
+<td>{b’Pen’, b’Book’, b’Coffee’}</td>
+</tr>
+<tr>
+<td>srandmember(name)</td>
+<td>随机返回键为name的集合中的一个元素，但不删除元素</td>
+<td>name：键值</td>
+<td>redis.srandmember(‘tags’)</td>
+<td>随机返回键为tags的集合中的一个元素</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-有序集合操作"><a href="#5-有序集合操作" class="headerlink" title="5. 有序集合操作"></a>5. 有序集合操作</h2><p>有序集合比集合多了一个分数字段，利用它可以对集合中的数据进行排序，其用法总结如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zadd(name, <em>args, *</em>kwargs)</td>
+<td>向键为name的zset中添加元素member，score用于排序。如果该元素存在，则更新其顺序</td>
+<td>name： 键名；args：可变参数</td>
+<td>redis.zadd(‘grade’, 100, ‘Bob’, 98, ‘Mike’)</td>
+<td>向键为grade的zset中添加Bob（其score为100），并添加Mike（其score为98）</td>
+<td>2，即添加的元素个数</td>
+</tr>
+<tr>
+<td>zrem(name, *values)</td>
+<td>删除键为name的zset中的元素</td>
+<td>name：键名；values：元素</td>
+<td>redis.zrem(‘grade’, ‘Mike’)</td>
+<td>从键为grade的zset中删除Mike</td>
+<td>1，即删除的元素个数</td>
+</tr>
+<tr>
+<td>zincrby(name, value, amount=1)</td>
+<td>如果在键为name的zset中已经存在元素value，则将该元素的score增加amount；否则向该集合中添加该元素，其score的值为amount</td>
+<td>name：key名；value：元素；amount：增长的score值</td>
+<td>redis.zincrby(‘grade’, ‘Bob’, -2)</td>
+<td>键为grade的zset中Bob的score减2</td>
+<td>98.0，即修改后的值</td>
+</tr>
+<tr>
+<td>zrank(name, value)</td>
+<td>返回键为name的zset中元素的排名，按score从小到大排序，即名次</td>
+<td>name：键名；value：元素值</td>
+<td>redis.zrank(‘grade’, ‘Amy’)</td>
+<td>得到键为grade的zset中Amy的排名</td>
+<td>1</td>
+</tr>
+<tr>
+<td>zrevrank(name, value)</td>
+<td>返回键为name的zset中元素的倒数排名（按score从大到小排序），即名次</td>
+<td>name：键名；value：元素值</td>
+<td>redis.zrevrank(‘grade’, ‘Amy’)</td>
+<td>得到键为grade的zset中Amy的倒数排名</td>
+<td>2</td>
+</tr>
+<tr>
+<td>zrevrange(name, start, end, withscores=False)</td>
+<td>返回键为name的zset（按score从大到小排序）中index从start到end的所有元素</td>
+<td>name：键值；start：开始索引；end：结束索引；withscores：是否带score</td>
+<td>redis.zrevrange(‘grade’, 0, 3)</td>
+<td>返回键为grade的zset中前四名元素</td>
+<td>[b’Bob’, b’Mike’, b’Amy’, b’James’]</td>
+</tr>
+<tr>
+<td>zrangebyscore(name, min, max, start=None, num=None, withscores=False)</td>
+<td>返回键为name的zset中score在给定区间的元素</td>
+<td>name：键名；min：最低score；max：最高score； start：起始索引；num：个数；withscores：是否带score</td>
+<td>redis.zrangebyscore(‘grade’, 80, 95)</td>
+<td>返回键为grade的zset中score在80和95之间的元素</td>
+<td>[b’Bob’, b’Mike’, b’Amy’, b’James’]</td>
+</tr>
+<tr>
+<td>zcount(name, min, max)</td>
+<td>返回键为name的zset中score在给定区间的数量</td>
+<td>name：键名；min：最低score；max：最高score</td>
+<td>redis.zcount(‘grade’, 80, 95)</td>
+<td>返回键为grade的zset中score在80到95的元素个数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>zcard(name)</td>
+<td>返回键为name的zset的元素个数</td>
+<td>name：键名</td>
+<td>redis.zcard(‘grade’)</td>
+<td>获取键为grade的zset中元素的个数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>zremrangebyrank(name, min, max)</td>
+<td>删除键为name的zset中排名在给定区间的元素</td>
+<td>name：键名；min：最低位次；max：最高位次</td>
+<td>redis.zremrangebyrank(‘grade’, 0, 0)</td>
+<td>删除键为grade的zset中排名第一的元素</td>
+<td>1，即删除的元素个数</td>
+</tr>
+<tr>
+<td>zremrangebyscore(name, min, max)</td>
+<td>删除键为name的zset中score在给定区间的元素</td>
+<td>name：键名；min：最低score；max：最高score</td>
+<td>redis.zremrangebyscore(‘grade’, 80, 90)</td>
+<td>删除score在80到90之间的元素</td>
+<td>1，即删除的元素个数</td>
+</tr>
+</tbody></table>
+<h2 id="6-散列操作"><a href="#6-散列操作" class="headerlink" title="6. 散列操作"></a>6. 散列操作</h2><p>Redis还提供了散列表的数据结构，我们可以用<code>name</code>指定一个散列表的名称，表内存储了各个键值对，用法总结如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>参数说明</th>
+<th>示例</th>
+<th>示例说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hset(name, key, value)</td>
+<td>向键为name的散列表中添加映射</td>
+<td>name：键名；key：映射键名；value：映射键值</td>
+<td>hset(‘price’, ‘cake’, 5)</td>
+<td>向键为price的散列表中添加映射关系，cake的值为5</td>
+<td>1，即添加的映射个数</td>
+</tr>
+<tr>
+<td>hsetnx(name, key, value)</td>
+<td>如果映射键名不存在，则向键为name的散列表中添加映射</td>
+<td>name：键名；key：映射键名；value：映射键值</td>
+<td>hsetnx(‘price’, ‘book’, 6)</td>
+<td>向键为price的散列表中添加映射关系，book的值为6</td>
+<td>1，即添加的映射个数</td>
+</tr>
+<tr>
+<td>hget(name, key)</td>
+<td>返回键为name的散列表中key对应的值</td>
+<td>name：键名；key：映射键名</td>
+<td>redis.hget(‘price’, ‘cake’)</td>
+<td>获取键为price的散列表中键名为cake的值</td>
+<td>5</td>
+</tr>
+<tr>
+<td>hmget(name, keys, *args)</td>
+<td>返回键为name的散列表中各个键对应的值</td>
+<td>name：键名；keys：映射键名列表</td>
+<td>redis.hmget(‘price’, [‘apple’, ‘orange’])</td>
+<td>获取键为price的散列表中apple和orange的值</td>
+<td>[b’3’, b’7’]</td>
+</tr>
+<tr>
+<td>hmset(name, mapping)</td>
+<td>向键为name的散列表中批量添加映射</td>
+<td>name：键名；mapping：映射字典</td>
+<td>redis.hmset(‘price’, {‘banana’: 2, ‘pear’: 6})</td>
+<td>向键为price的散列表中批量添加映射</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hincrby(name, key, amount=1)</td>
+<td>将键为name的散列表中映射的值增加amount</td>
+<td>name：键名；key：映射键名；amount：增长量</td>
+<td>redis.hincrby(‘price’, ‘apple’, 3)</td>
+<td>key为price的散列表中apple的值增加3</td>
+<td>6，修改后的值</td>
+</tr>
+<tr>
+<td>hexists(name, key)</td>
+<td>键为name的散列表中是否存在键名为键的映射</td>
+<td>name：键名；key：映射键名</td>
+<td>redis.hexists(‘price’, ‘banana’)</td>
+<td>键为price的散列表中banana的值是否存在</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hdel(name, *keys)</td>
+<td>在键为name的散列表中，删除键名为键的映射</td>
+<td>name：键名；keys：映射键名</td>
+<td>redis.hdel(‘price’, ‘banana’)</td>
+<td>从键为price的散列表中删除键名为banana的映射</td>
+<td>True</td>
+</tr>
+<tr>
+<td>hlen(name)</td>
+<td>从键为name的散列表中获取映射个数</td>
+<td>name： 键名</td>
+<td>redis.hlen(‘price’)</td>
+<td>从键为price的散列表中获取映射个数</td>
+<td>6</td>
+</tr>
+<tr>
+<td>hkeys(name)</td>
+<td>从键为name的散列表中获取所有映射键名</td>
+<td>name：键名</td>
+<td>redis.hkeys(‘price’)</td>
+<td>从键为price的散列表中获取所有映射键名</td>
+<td>[b’cake’, b’book’, b’banana’, b’pear’]</td>
+</tr>
+<tr>
+<td>hvals(name)</td>
+<td>从键为name的散列表中获取所有映射键值</td>
+<td>name：键名</td>
+<td>redis.hvals(‘price’)</td>
+<td>从键为price的散列表中获取所有映射键值</td>
+<td>[b’5’, b’6’, b’2’, b’6’]</td>
+</tr>
+<tr>
+<td>hgetall(name)</td>
+<td>从键为name的散列表中获取所有映射键值对</td>
+<td>name：键名</td>
+<td>redis.hgetall(‘price’)</td>
+<td>从键为price的散列表中获取所有映射键值对</td>
+<td>{b’cake’: b’5’, b’book’: b’6’, b’orange’: b’7’, b’pear’: b’6’}</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>具体操作参考官方文档：</p>
+<ol>
+<li><a href="http://doc.redisfans.com/" target="_blank" rel="noopener">http://doc.redisfans.com/</a></li>
+<li><a href="http://redis.cn/" target="_blank" rel="noopener">http://redis.cn/</a></li>
+</ol>
+</blockquote>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          木子家❀
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://LsWGG.github.io/2020/09/30/Redis操作/" title="Redis操作" target="_blank">http://LsWGG.github.io/2020/09/30/Redis操作/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -236,63 +1134,158 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://lswgg.github.io/2020/09/30/Redis%E6%93%8D%E4%BD%9C/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/05/03/MongDB/" class="archive-article-date">
-        <time datetime="2020-05-03T02:51:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2020/09/30/MySQL%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/30/Flask%E5%92%8CDjango/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flask和Django</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/05/03/MongDB/" target="_blank">MongDB</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、Redis概括"><span class="toc-number">1.</span> <span class="toc-text">一、Redis概括</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Redis特点"><span class="toc-number">1.0.1.</span> <span class="toc-text">1  Redis特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-redis宕机"><span class="toc-number">1.0.2.</span> <span class="toc-text">2  redis宕机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-redis高可用"><span class="toc-number">1.0.3.</span> <span class="toc-text">3  redis高可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-为什么Redis比MySQL快"><span class="toc-number">1.0.4.</span> <span class="toc-text">4  为什么Redis比MySQL快</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、Redis缓存"><span class="toc-number">2.</span> <span class="toc-text">二、Redis缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-有效期TTL（Time-to-live）"><span class="toc-number">2.0.1.</span> <span class="toc-text">1  有效期TTL（Time to live）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-过期策略"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">1.1  过期策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-缓存淘汰-（eviction）"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">1.2  缓存淘汰 （eviction）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-缓存模式"><span class="toc-number">2.0.2.</span> <span class="toc-text">2  缓存模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-缓存穿透"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">2.1  缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-缓存雪崩"><span class="toc-number">2.0.2.2.</span> <span class="toc-text">2.2  缓存雪崩</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、Redis操作"><span class="toc-number">3.</span> <span class="toc-text">三、Redis操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-键操作"><span class="toc-number">3.1.</span> <span class="toc-text">1. 键操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字符串操作"><span class="toc-number">3.2.</span> <span class="toc-text">2. 字符串操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-列表操作"><span class="toc-number">3.3.</span> <span class="toc-text">3. 列表操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-集合操作"><span class="toc-number">3.4.</span> <span class="toc-text">4. 集合操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-有序集合操作"><span class="toc-number">3.5.</span> <span class="toc-text">5. 有序集合操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-散列操作"><span class="toc-number">3.6.</span> <span class="toc-text">6. 散列操作</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        
+    </div>
+</aside>
 
-    
 
+<!-- 
+
+ -->
+
+<!-- 
+
+
+
+
+
+ -->
+<!-- 6、Valine https://valine.js.org -->
+
+  
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:rgba(255,255,255,.55)}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:rgba(255,255,255,.55)}}
+        </style>
+        <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "akSt17hH0QhogvnWpUpEWLnX-gzGzoHsz",
+            app_key: "uUDT4jx91daFAfOzduaGbcQu",
+            placeholder: "Just go go",
+            avatar:"mm"
+        });
+    }
+</script>
+    </section>
+  
 
           </div>
         </div>
@@ -332,9 +1325,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

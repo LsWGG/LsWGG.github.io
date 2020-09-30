@@ -6,24 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://LsWGG.github.io">
-  <title>Tag: NoSQL | (*╹▽╹*)欢迎光临</title>
+  <title>部署相关 | (*╹▽╹*)欢迎光临</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="(*╹▽╹*)欢迎光临">
-<meta property="og:url" content="http://lswgg.github.io/tags/NoSQL/index.html">
+  <meta name="description" content="一、nginx参考文档 是一个高性能的HTTP和反向代理服务器，主要处理静态资源 1.1  反向代理正向代理： 为局域网客户端向外访问Internet服务（代理用户，隐藏客户端） 反向代理： 为局域网服务器向外提供Internet服务（代理服务器，隐藏服务器）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署相关">
+<meta property="og:url" content="http://lswgg.github.io/2020/09/30/%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="(*╹▽╹*)欢迎光临">
+<meta property="og:description" content="一、nginx参考文档 是一个高性能的HTTP和反向代理服务器，主要处理静态资源 1.1  反向代理正向代理： 为局域网客户端向外访问Internet服务（代理用户，隐藏客户端） 反向代理： 为局域网服务器向外提供Internet服务（代理服务器，隐藏服务器）">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-30T03:41:49.000Z">
+<meta property="article:modified_time" content="2020-09-30T08:06:59.477Z">
 <meta property="article:author" content="木子家❀">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content=" Linux">
-<meta property="article:tag" content=" Django">
-<meta property="article:tag" content=" Web">
-<meta property="article:tag" content=" 测试">
-<meta property="article:tag" content=" NoSQL">
-<meta property="article:tag" content=" ES">
-<meta property="article:tag" content=" Luck">
+<meta property="article:tag" content="Web">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="(*╹▽╹*)欢迎光临" type="application/atom+xml">
@@ -190,109 +187,291 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-部署相关" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/09/30/Redis%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-        <time datetime="2020-09-30T03:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-30</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/09/30/Redis%E6%93%8D%E4%BD%9C/" target="_blank">Redis操作</a>
   
+    <h1 class="article-title" itemprop="name">
+      部署相关
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/09/30/%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+        <time datetime="2020-09-30T03:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-30</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">519字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="一、nginx"><a href="#一、nginx" class="headerlink" title="一、nginx"></a>一、nginx</h1><p><a href="https://handout-1300728887.cos.ap-beijing.myqcloud.com/%E8%AE%B2%E4%B9%89/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/nginx/Advanced.html" target="_blank" rel="noopener">参考文档</a></p>
+<p><strong>是一个高性能的HTTP和反向代理服务器，主要处理静态资源</strong></p>
+<h3 id="1-1-反向代理"><a href="#1-1-反向代理" class="headerlink" title="1.1  反向代理"></a>1.1  <a href="https://handout-1300728887.cos.ap-beijing.myqcloud.com/%E8%AE%B2%E4%B9%89/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/nginx/nginx-reverse.html" target="_blank" rel="noopener">反向代理</a></h3><p>正向代理： 为局域网<strong>客户端</strong>向外访问Internet服务<strong>（代理用户，隐藏客户端）</strong></p>
+<p>反向代理： 为局域网<strong>服务器</strong>向外提供Internet服务<strong>（代理服务器，隐藏服务器）</strong></p>
+<a id="more"></a>
+
+<h3 id="1-2-负载均衡"><a href="#1-2-负载均衡" class="headerlink" title="1.2  负载均衡"></a>1.2  <a href="https://handout-1300728887.cos.ap-beijing.myqcloud.com/%E8%AE%B2%E4%B9%89/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/nginx/nginx-load.html" target="_blank" rel="noopener">负载均衡</a></h3><p>有一台服务器充当调度者的身份（负载均衡器），请求先到达它，再根据每台服务器的负载情况分配请求</p>
+<ol>
+<li>内置策略：nginx自带算法<ul>
+<li>雨露均沾型：轮训（默认）、加权轮训、哈希<ul>
+<li>轮训：按顺序逐一分配</li>
+<li>加权轮训：权重越大，被分配几率越高，适用于服务器性能不均衡情况</li>
+</ul>
+</li>
+<li>定向服务型：ip_hash、least_conn、cookie、route、lean<ul>
+<li>ip_hash：按访问IP的哈希结果分配请求，分配后访客访问固定后端服务器，有效的解决动态网页会话共享问题。</li>
+</ul>
+</li>
+<li>商业类型：ntlm、least_time、queue、stick</li>
+</ul>
+</li>
+<li>第三方算法：fair、url_hash<ul>
+<li>fair：基于后端服务器的响应时间来分配请求，响应时间短的优先分配。</li>
+<li>url_hash：按访问的哈希结果分配请求，使同定向到同一台后端服务器，可提高后端缓存服务器的效率。</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-3-提供静态文件"><a href="#1-3-提供静态文件" class="headerlink" title="1.3  提供静态文件"></a>1.3  提供静态文件</h3><p>静态文件收集命令：<code>python mange.py collectstatic</code></p>
+<h3 id="1-4-WSGI"><a href="#1-4-WSGI" class="headerlink" title="1.4  WSGI"></a>1.4  WSGI</h3><ul>
+<li>WSGI是一种通信协议， Web 服务器(uWSGI)与 Web 应用程序或应用框架(Django)之间的一种低级别的接口</li>
+<li>uwsgi是一种线路协议我不是一种通信协议，常用于在uWSGI服务器于其他网络服务器的数据通信</li>
+<li>uWSGI是实现了uwsgi和WSGI两种协议的Web服务器，<strong>主要处理动态资源</strong></li>
+</ul>
+<h1 id="二、gunicorn"><a href="#二、gunicorn" class="headerlink" title="二、gunicorn"></a>二、gunicorn</h1><p><a href="https://handout-1300728887.cos.ap-beijing.myqcloud.com/%E8%AE%B2%E4%B9%89/%E9%BB%91%E9%A9%AC%E5%A4%B4%E6%9D%A1%E9%A1%B9%E7%9B%AE%E8%AF%BE%E4%BB%B6/C12-Deployment/Gunicorn.html" target="_blank" rel="noopener">参考文档</a></p>
+<p>安装：<code>pip install gunicorn</code></p>
+<p>查看使用信息：<code>$gunicorn -h</code></p>
+<p>直接运行：<code>gunicorn 运行文件名称：flask程序实例名</code></p>
+<p>指定进程和端口号：`$gunicorn -w 4 -b 127.0.0.1:5001 运行文件名称:Flask程序实例名</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          木子家❀
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://LsWGG.github.io/2020/09/30/部署相关/" title="部署相关" target="_blank">http://LsWGG.github.io/2020/09/30/部署相关/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://lswgg.github.io/2020/09/30/%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/05/03/MongDB/" class="archive-article-date">
-        <time datetime="2020-05-03T02:51:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2020/09/30/Python%E8%A1%A5%E5%85%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          &#39;Python补充&#39;
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/30/Django%E6%93%8D%E4%BD%9C%E8%A1%A5%E5%85%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Django补充</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/05/03/MongDB/" target="_blank">MongDB</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、nginx"><span class="toc-number">1.</span> <span class="toc-text">一、nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-反向代理"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1  反向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-负载均衡"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2  负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-提供静态文件"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3  提供静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-WSGI"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.4  WSGI</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、gunicorn"><span class="toc-number">2.</span> <span class="toc-text">二、gunicorn</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        
+    </div>
+</aside>
 
-    
 
+<!-- 
+
+ -->
+
+<!-- 
+
+
+
+
+
+ -->
+<!-- 6、Valine https://valine.js.org -->
+
+  
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:rgba(255,255,255,.55)}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:rgba(255,255,255,.55)}}
+        </style>
+        <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "akSt17hH0QhogvnWpUpEWLnX-gzGzoHsz",
+            app_key: "uUDT4jx91daFAfOzduaGbcQu",
+            placeholder: "Just go go",
+            avatar:"mm"
+        });
+    }
+</script>
+    </section>
+  
 
           </div>
         </div>
@@ -332,9 +511,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
