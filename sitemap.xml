@@ -31,7 +31,7 @@
 
   <url>
     <loc>https://muzijia.site/blog</loc>
-    <lastmod>2024-01-27</lastmod>
+    <lastmod>2024-01-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -39,14 +39,14 @@
   
   <url>
     <loc>https://muzijia.site/blog/tags/ES/</loc>
-    <lastmod>2024-01-27</lastmod>
+    <lastmod>2024-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://muzijia.site/blog/tags/Python/</loc>
-    <lastmod>2024-01-27</lastmod>
+    <lastmod>2024-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
