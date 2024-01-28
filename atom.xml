@@ -3,11 +3,11 @@
   <title>木子家有小可爱🌸</title>
   
   
-  <link href="https://lishun.gitee.io/blog/atom.xml" rel="self"/>
+  <link href="https://lswgg.github.io/atom.xml" rel="self"/>
   
-  <link href="https://lishun.gitee.io/blog/"/>
+  <link href="https://lswgg.github.io/"/>
   <updated>2021-11-04T08:24:48.000Z</updated>
-  <id>https://lishun.gitee.io/blog/</id>
+  <id>https://lswgg.github.io/</id>
   
   <author>
     <name>木子</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Python丰富化文本输出</title>
-    <link href="https://lishun.gitee.io/blog/2021/10/14/Python%E4%B8%B0%E5%AF%8C%E5%8C%96%E6%96%87%E6%9C%AC%E8%BE%93%E5%87%BA/"/>
-    <id>https://lishun.gitee.io/blog/2021/10/14/Python%E4%B8%B0%E5%AF%8C%E5%8C%96%E6%96%87%E6%9C%AC%E8%BE%93%E5%87%BA/</id>
+    <link href="https://lswgg.github.io/2021/10/14/Python%E4%B8%B0%E5%AF%8C%E5%8C%96%E6%96%87%E6%9C%AC%E8%BE%93%E5%87%BA/"/>
+    <id>https://lswgg.github.io/2021/10/14/Python%E4%B8%B0%E5%AF%8C%E5%8C%96%E6%96%87%E6%9C%AC%E8%BE%93%E5%87%BA/</id>
     <published>2021-10-14T04:51:57.000Z</published>
     <updated>2021-11-04T08:24:48.000Z</updated>
     
@@ -32,14 +32,14 @@
     
     
     
-    <category term="Python" scheme="https://lishun.gitee.io/blog/tags/Python/"/>
+    <category term="Python" scheme="https://lswgg.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>ES之DSL库使用</title>
-    <link href="https://lishun.gitee.io/blog/2021/02/24/ES%E4%B9%8BDSL%E5%BA%93%E4%BD%BF%E7%94%A8/"/>
-    <id>https://lishun.gitee.io/blog/2021/02/24/ES%E4%B9%8BDSL%E5%BA%93%E4%BD%BF%E7%94%A8/</id>
+    <link href="https://lswgg.github.io/2021/02/24/ES%E4%B9%8BDSL%E5%BA%93%E4%BD%BF%E7%94%A8/"/>
+    <id>https://lswgg.github.io/2021/02/24/ES%E4%B9%8BDSL%E5%BA%93%E4%BD%BF%E7%94%A8/</id>
     <published>2021-02-24T08:15:34.000Z</published>
     <updated>2022-03-04T02:23:50.000Z</updated>
     
@@ -52,14 +52,14 @@
     
     
     
-    <category term="ES" scheme="https://lishun.gitee.io/blog/tags/ES/"/>
+    <category term="ES" scheme="https://lswgg.github.io/tags/ES/"/>
     
   </entry>
   
   <entry>
     <title>ES基本操作</title>
-    <link href="https://lishun.gitee.io/blog/2020/07/11/ES%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
-    <id>https://lishun.gitee.io/blog/2020/07/11/ES%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
+    <link href="https://lswgg.github.io/2020/07/11/ES%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://lswgg.github.io/2020/07/11/ES%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
     <published>2020-07-11T03:11:47.000Z</published>
     <updated>2022-03-04T02:23:46.000Z</updated>
     
@@ -72,7 +72,7 @@
     
     
     
-    <category term="ES" scheme="https://lishun.gitee.io/blog/tags/ES/"/>
+    <category term="ES" scheme="https://lswgg.github.io/tags/ES/"/>
     
   </entry>
   
